@@ -1,0 +1,78 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  workspaces Workspace[]
+}
+
+model Workspace {
+  id        String   @id @default(uuid())
+  name      String   @default("My Workspace")
+  ownerId   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  owner     User      @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  projects  Project[]
+}
+
+model Project {
+  id          String   @id @default(uuid())
+  name        String
+  workspaceId String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  workspace Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  scrapers  Scraper[]
+}
+
+model Scraper {
+  id          String   @id @default(uuid())
+  projectId   String
+  name        String
+  targetUrl   String
+  selectors   Json
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  project     Project      @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  runs        ScraperRun[]
+}
+
+model ScraperRun {
+  id          String   @id @default(uuid())
+  scraperId   String
+  status      String   @default("PENDING")
+  data        Json?
+  error       String?
+  startedAt   DateTime?
+  completedAt DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  scraper     Scraper  @relation(fields: [scraperId], references: [id], onDelete: Cascade)
+  exports     Export[]
+}
+
+model Export {
+  id        String   @id @default(uuid())
+  runId     String
+  format    String   @default("csv")
+  url       String?
+  createdAt DateTime @default(now())
+
+  run       ScraperRun @relation(fields: [runId], references: [id], onDelete: Cascade)
+}
