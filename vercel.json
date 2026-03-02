@@ -27,6 +27,14 @@
       "use": "@vercel/static"
     },
     {
+      "src": "ui-components/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "solutions/**",
+      "use": "@vercel/static"
+    },
+    {
       "src": "admin_app/css/**",
       "use": "@vercel/static"
     },

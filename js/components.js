@@ -23,10 +23,13 @@ function getBasePath() {
 
 async function loadComponent(element, componentPath, basePath = '') {
     try {
-        const response = await fetch(basePath + componentPath);
-        if (!response.ok) throw new Error(`Failed to load component: ${componentPath}`);
+        // Ensure componentPath starts with / if not absolute
+        const fullPath = componentPath.startsWith('/') ? componentPath : (basePath + componentPath);
+        const response = await fetch(fullPath);
+        if (!response.ok) throw new Error(`Failed to load component: ${fullPath}`);
         let html = await response.text();
         
+        // Fix internal links if we are in a subfolder
         if (basePath) {
             html = html.replace(/(href|src)=["']([^"']+)["']/g, (match, attr, path) => {
                 if (path.startsWith('http') || path.startsWith('//') || path.startsWith('#') || path.startsWith('mailto:') || path.startsWith('data:') || path.startsWith('/')) {
