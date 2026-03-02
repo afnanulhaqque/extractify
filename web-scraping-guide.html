@@ -1,0 +1,400 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ultimate Web Scraping Guide - Extractify</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Shared Styles */
+        .navbar {
+            background-color: var(--color-bg-main);
+            padding: var(--spacing-md) 0;
+            border-bottom: 1px solid var(--color-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            color: var(--color-text-main);
+            text-decoration: none;
+        }
+
+        .footer {
+            background-color: var(--color-text-main);
+            color: white;
+            padding: var(--spacing-4xl) 0 var(--spacing-2xl);
+        }
+
+        .footer a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+        }
+
+        /* Guide Specific */
+        .guide-hero {
+            background-color: var(--color-surface);
+            padding: var(--spacing-4xl) 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .guide-container {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: var(--spacing-3xl);
+            margin-top: var(--spacing-3xl);
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .sidebar h4 {
+            margin-bottom: var(--spacing-lg);
+            text-transform: uppercase;
+            font-size: 0.875rem;
+            letter-spacing: 1px;
+            color: var(--color-text-muted);
+        }
+
+        .sidebar-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar-links li {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .sidebar-links a {
+            color: var(--color-text-main);
+            font-weight: 500;
+            transition: color var(--transition-fast);
+        }
+
+        .sidebar-links a:hover {
+            color: var(--color-primary);
+        }
+
+        .guide-content {
+            max-width: 800px;
+        }
+
+        .guide-content h2 {
+            margin-top: var(--spacing-3xl);
+            margin-bottom: var(--spacing-lg);
+            font-size: 2.25rem;
+        }
+
+        .guide-content h3 {
+            margin-top: var(--spacing-2xl);
+            margin-bottom: var(--spacing-md);
+            font-size: 1.5rem;
+        }
+
+        .guide-content p {
+            margin-bottom: var(--spacing-lg);
+            font-size: 1.125rem;
+            line-height: 1.8;
+        }
+
+        .guide-content img {
+            border-radius: var(--border-radius-lg);
+            margin: var(--spacing-xl) 0;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--color-border);
+        }
+
+        .feature-box {
+            background-color: rgba(var(--color-primary-rgb), 0.05);
+            border-left: 4px solid var(--color-primary);
+            padding: var(--spacing-lg);
+            border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
+            margin: var(--spacing-xl) 0;
+        }
+
+        .step-block {
+            display: flex;
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .step-num {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            background-color: var(--color-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            color: white;
+            padding: var(--spacing-2xl);
+            border-radius: var(--border-radius-xl);
+            text-align: center;
+            margin-top: var(--spacing-4xl);
+        }
+
+        .cta-box h3 {
+            color: white;
+        }
+
+        .cta-box p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        @media (max-width: 992px) {
+            .guide-container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                display: none;
+            }
+        }
+    </style>
+
+    <script src="js/components.js"></script>
+
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-brand">
+                <img src="assets/logo-icon.png" alt="Extractify Logo"
+                    style="width: 32px; height: 32px; border-radius: 8px;">
+                Extractify
+            </a>
+            <div class="nav-links">
+                <a href="index.html#how" class="nav-link">How it Works</a>
+                <a href="index.html#benefits" class="nav-link">Benefits</a>
+                <a href="index.html#use-cases" class="nav-link">Use Cases</a>
+                <a href="index.html#pricing" class="nav-link">Pricing</a>
+                <a href="index.html#faq" class="nav-link">FAQ</a>
+                <a href="login.html" class="btn btn-secondary" style="padding: 0.5rem 1rem;">Login</a>
+                <a href="start-free.html" class="btn btn-primary" style="padding: 0.5rem 1rem;">Start Free</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="guide-hero">
+        <div class="container">
+            <span class="badge"
+                style="background: rgba(15, 14, 71, 0.1); color: var(--color-primary); padding: 4px 12px; border-radius: 20px; font-weight: 600; font-size: 0.875rem;">Educational
+                Guide</span>
+            <h1 style="margin-top: var(--spacing-md);">The Ultimate Web Scraping Guide for 2026</h1>
+            <p>Master the art of automated data extraction without writing a single line of code.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="guide-container">
+            <!-- Sidebar TOC -->
+            <aside class="sidebar">
+                <h4>Table of Contents</h4>
+                <ul class="sidebar-links">
+                    <li><a href="#what-is-scraping">What is Web Scraping?</a></li>
+                    <li><a href="#why-automate">Why Automate Data?</a></li>
+                    <li><a href="#extractify-tutorial">Step-by-Step Tutorial</a></li>
+                    <li><a href="#advanced-techniques">Advanced Techniques</a></li>
+                    <li><a href="#ethics-best-practices">Ethics & Best Practices</a></li>
+                </ul>
+            </aside>
+
+            <!-- Content Area -->
+            <article class="guide-content">
+                <section id="what-is-scraping">
+                    <h2>What is Web Scraping?</h2>
+                    <p>Web scraping (also known as web harvesting or web data extraction) is the process of using
+                        software to automatically 'scrape' or extract data from websites. Instead of manually copying
+                        and pasting information like product prices, contact details, or news articles, web scraping
+                        does it for you in seconds.</p>
+                    <p>Technically, a web scraper sends a request to a website's server, downloads the HTML content, and
+                        parses it to find specific elements you've instructed it to look for.</p>
+                </section>
+
+                <section id="why-automate">
+                    <h2>Why Automate Data?</h2>
+                    <p>In the modern digital economy, data is the most valuable currency. Companies that can collect and
+                        analyze data quickly gain a significant competitive advantage. Automation allows you to:</p>
+                    <ul>
+                        <li>
+                            <p><strong>Save Time:</strong> What takes a human days can be done in minutes.</p>
+                        </li>
+                        <li>
+                            <p><strong>Ensure Accuracy:</strong> Computers don't make typos or miss rows.</p>
+                        </li>
+                        <li>
+                            <p><strong>Scale Up:</strong> Collect data from thousands of pages simultaneously.</p>
+                        </li>
+                    </ul>
+                    <div class="feature-box">
+                        <strong>Pro Tip:</strong> Most businesses use web scraping for competitor price monitoring, lead
+                        generation, and market research.
+                    </div>
+                </section>
+
+                <section id="extractify-tutorial">
+                    <h2>Step-by-Step Extractify Tutorial</h2>
+                    <p>Extractify makes web scraping accessible to everyone. Here is how you can set up your first
+                        project:</p>
+
+                    <div class="step-block">
+                        <div class="step-num">1</div>
+                        <div>
+                            <h3>Enter the Target URL</h3>
+                            <p>Copy the URL of the website you want to extract data from and paste it into the
+                                Extractify dashboard. Our engine will analyze the page structure automatically.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-block">
+                        <div class="step-num">2</div>
+                        <div>
+                            <h3>Select Your Data</h3>
+                            <p>Use our visual Point-and-Click selector to highlight the elements you want. For example,
+                                click on a product title, and Extractify will intelligently find all other product
+                                titles on the page.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-block">
+                        <div class="step-num">3</div>
+                        <div>
+                            <h3>Run & Export</h3>
+                            <p>Click "Run Scraper". Once finished, you can preview the data in a table and download it
+                                as an Excel, CSV, or JSON file.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="advanced-techniques">
+                    <h2>Advanced Techniques</h2>
+                    <p>For more complex websites, Extractify offers powerful features that handle challenges like:</p>
+                    <ul>
+                        <li>
+                            <p><strong>Pagination:</strong> Automatically navigate through "Next" buttons to scrape
+                                multiple pages.</p>
+                        </li>
+                        <li>
+                            <p><strong>Dynamic Content:</strong> Wait for JavaScript elements to load before scraping.
+                            </p>
+                        </li>
+                        <li>
+                            <p><strong>Infinite Scroll:</strong> Capture data that only appears as you scroll down the
+                                page.</p>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="ethics-best-practices">
+                    <h2>Ethics & Best Practices</h2>
+                    <p>While web scraping is legal in most jurisdictions for public data, it's important to be a good
+                        "web citizen":</p>
+                    <p>1. <strong>Respect Robots.txt:</strong> Check if a site explicitly forbids scraping.</p>
+                    <p>2. <strong>Don't Overload Servers:</strong> Use reasonable scraping speeds to avoid crashing
+                        smaller websites.</p>
+                    <p>3. <strong>Data Privacy:</strong> Be careful when scraping personal data and ensure compliance
+                        with GDPR/CCPA.</p>
+                </section>
+
+                <div class="cta-box">
+                    <h3>Ready to build your first scraper?</h3>
+                    <p>Join thousands of users who automate their workflow with Extractify.</p>
+                    <a href="start-free.html" class="btn btn-primary"
+                        style="background: white; color: var(--color-primary); margin-top: var(--spacing-md);">Start
+                        Free Project</a>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="index.html" class="footer-logo">
+                        <img src="assets/logo-icon.png" alt="Extractify Logo"
+                            style="width: 24px; height: 24px; border-radius: 6px; margin-right: 8px; filter: brightness(0) invert(1);">
+                        Extractify
+                    </a>
+                    <p style="font-size: 1rem; margin-bottom: var(--spacing-md);">Turn Any Website Into Clean Data —
+                        Instantly.</p>
+                </div>
+                <div>
+                    <h4 style="color: white; font-size: 1rem; margin-bottom: var(--spacing-md);">Product</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 8px;"><a href="index.html#benefits">Benefits</a></li>
+                        <li style="margin-bottom: 8px;"><a href="index.html#pricing">Pricing</a></li>
+                        <li style="margin-bottom: 8px;"><a href="index.html#use-cases">Use Cases</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: white; font-size: 1rem; margin-bottom: var(--spacing-md);">Resources</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 8px;"><a href="index.html#faq">FAQ</a></li>
+                        <li style="margin-bottom: 8px;"><a href="help-center.html">Help Center</a></li>
+                        <li style="margin-bottom: 8px;"><a href="web-scraping-guide.html">Web Scraping Guide</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: white; font-size: 1rem; margin-bottom: var(--spacing-md);">Legal</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 8px;"><a href="privacy.html">Privacy Policy</a></li>
+                        <li style="margin-bottom: 8px;"><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: var(--spacing-lg); text-align: center; font-size: 0.875rem;">
+                <p>&copy; 2026 Extractify Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price Monitoring - Extractify</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --hero-gradient: var(--gradient-emerald);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <header class="solution-hero animate-fade-in">
+        <div class="container">
+            <div class="no-code-badge"
+                style="background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); margin-bottom: 2rem;">
+                <i data-lucide="shopping-cart" style="width: 16px; height: 16px;"></i> E-commerce Price Monitoring
+            </div>
+            <h1>Stay Ahead with Automated Price Tracking</h1>
+            <p>Monitor competitors, track inventory levels, and optimize your pricing strategy across Amazon, eBay,
+                Shopify, and any online store.</p>
+            <div style="display: flex; gap: var(--spacing-md); justify-content: center; margin-top: 2rem;">
+                <a href="../start-free.html" class="btn btn-white btn-animated" style="padding: 1rem 2.5rem;">Start
+                    Free Trial</a>
+                <a href="#features" class="btn btn-outline-white" style="padding: 1rem 2.5rem;">How it Works</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="features" class="section animate-fade-in">
+        <div class="container">
+            <h2 class="text-center" style="margin-bottom: 4rem;">Maximize Your Margins with Better Data</h2>
+            <div class="feature-grid">
+                <div class="card glass-card-hover feature-item">
+                    <div class="feature-icon"><i data-lucide="trending-down"></i></div>
+                    <h4>Real-time Price Alerts</h4>
+                    <p style="color: var(--color-text-muted);">Get notified the second a competitor drops their price.
+                        Update yours automatically and win the Buy Box.</p>
+                </div>
+                <div class="card glass-card-hover feature-item">
+                    <div class="feature-icon"><i data-lucide="layout"></i></div>
+                    <h4>Inventory Tracking</h4>
+                    <p style="color: var(--color-text-muted);">Monitor stock levels of your competitors to identify gaps
+                        in the market and stock-out opportunities.</p>
+                </div>
+                <div class="card glass-card-hover feature-item">
+                    <div class="feature-icon"><i data-lucide="bar-chart"></i></div>
+                    <h4>Trend Analysis</h4>
+                    <p style="color: var(--color-text-muted);">Visualize historical pricing trends to understand
+                        seasonal patterns and competitor behavior over time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="preview-section" style="position: relative; overflow: hidden;">
+        <!-- Glowing Background Blob -->
+        <div
+            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 400px; background: var(--hero-gradient); filter: blur(120px); opacity: 0.35; border-radius: 50%; pointer-events: none; z-index: 0;">
+        </div>
+
+        <div class="container" style="position: relative; z-index: 1;">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <span
+                    style="color: var(--color-emerald); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.85rem;">Live
+                    Tracker</span>
+                <h2 style="margin-top: 0.5rem;">Competitive Price Intelligence</h2>
+            </div>
+
+            <div class="glass-table-container preview-container">
+                <table class="data-table" style="width: 100%; border-collapse: collapse; text-align: left;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid var(--color-border);">
+                            <th style="padding: 15px; font-weight: 700;">Product Name</th>
+                            <th style="padding: 15px; font-weight: 700;">Your Price</th>
+                            <th style="padding: 15px; font-weight: 700;">Competitor Avg</th>
+                            <th style="padding: 15px; font-weight: 700;">Suggestion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
+                            <td style="padding: 15px;">Smart Watch Series 7</td>
+                            <td style="padding: 15px;">$299.99</td>
+                            <td style="padding: 15px; color: var(--color-danger);">$274.50</td>
+                            <td style="padding: 15px; color: var(--color-emerald); font-weight: 600;">Match to $274.99
+                            </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
+                            <td style="padding: 15px;">Noise Cancelling Headphones</td>
+                            <td style="padding: 15px;">$189.00</td>
+                            <td style="padding: 15px;">$195.00</td>
+                            <td style="padding: 15px; color: var(--color-emerald); font-weight: 600;">Increase to
+                                $194.00</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 15px;">Wireless Charging Pad</td>
+                            <td style="padding: 15px;">$45.00</td>
+                            <td style="padding: 15px;">$44.99</td>
+                            <td style="padding: 15px; color: var(--color-text-muted); font-weight: 600;">Maintain</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="cta-banner"
+            style="background: var(--hero-gradient); position: relative; overflow: hidden; box-shadow: var(--shadow-2xl); border: 1px solid rgba(255,255,255,0.1);">
+            <div
+                style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at center, rgba(255,255,255,0.15) 0%, transparent 50%); pointer-events: none;">
+            </div>
+            <div style="position: relative; z-index: 1;">
+                <h2>Data drives decisions.</h2>
+                <p style="margin-top: 1rem; opacity: 0.8; font-size: 1.1rem;">Join 3,500+ analysts using Extractify to
+                    power
+                    their reports.</p>
+                <a href="../start-free.html" class="btn btn-white btn-animated"
+                    style="margin-top: 2rem; padding: 1rem 3.5rem;">Create
+                    My Price Tracker</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="../js/components.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.lucide) { window.lucide.createIcons(); }
+        });
+    </script>
+</body>
+
+</html>

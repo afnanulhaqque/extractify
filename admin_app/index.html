@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extractify - Admin Panel</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Chart.js for Mock Data -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Phosphor Icons for a modern SaaS look -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- App Styles -->
+    <link rel="stylesheet" href="css/admin-variables.css">
+    <link rel="stylesheet" href="css/admin-style.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="brand">
+                <img src="../assets/logo-icon.png" alt="Extractify Logo"
+                    style="width: 24px; height: 24px; border-radius: 6px; margin-right: 8px;">
+                Extractify
+            </div>
+
+            <nav class="nav-menu">
+                <div class="nav-section-title">Main Menu</div>
+                <a href="#view-dashboard" class="nav-item active" data-target="view-dashboard">
+                    <i class="ph ph-squares-four"></i> Dashboard
+                </a>
+                <a href="#view-new-scraper" class="nav-item" data-target="view-new-scraper">
+                    <i class="ph ph-magic-wand"></i> New Scraper
+                </a>
+                <a href="#view-projects" class="nav-item" data-target="view-projects">
+                    <i class="ph ph-folder-open"></i> Projects
+                </a>
+                <a href="#view-data-tables" class="nav-item" data-target="view-data-tables">
+                    <i class="ph ph-table"></i> Data Tables
+                </a>
+                <a href="#view-automation" class="nav-item" data-target="view-automation">
+                    <i class="ph ph-clock"></i> Automation
+                </a>
+                <a href="#view-exports" class="nav-item" data-target="view-exports">
+                    <i class="ph ph-download-simple"></i> Exports
+                </a>
+
+                <div class="nav-section-title" style="margin-top: var(--spacing-lg);">System</div>
+                <a href="#view-api" class="nav-item" data-target="view-api">
+                    <i class="ph ph-code"></i> API & Integrations
+                </a>
+                <a href="#view-billing" class="nav-item" data-target="view-billing">
+                    <i class="ph ph-credit-card"></i> Billing
+                </a>
+                <a href="#view-team" class="nav-item" data-target="view-team">
+                    <i class="ph ph-users"></i> Team Management
+                </a>
+                <a href="#view-settings" class="nav-item" data-target="view-settings">
+                    <i class="ph ph-gear"></i> Settings
+                </a>
+            </nav>
+
+            <div class="workspace-switcher">
+                <div
+                    style="display: flex; align-items: center; justify-content: space-between; cursor: pointer; padding: 10px; border-radius: 8px; font-family: var(--font-sans); transition: background-color 0.2s;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <div
+                            style="width: 24px; height: 24px; background: rgba(15, 14, 71, 0.1); color: var(--primary-color); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 12px;">
+                            A</div>
+                        <span style="font-size: 14px; font-weight: 500;">Acme Corp</span>
+                    </div>
+                    <i class="ph ph-caret-up-down" style="color: var(--text-muted);"></i>
+                </div>
+                <div class="nav-item" style="padding-top: var(--spacing-sm); margin-bottom: 0;">
+                    <span class="badge badge-primary"
+                        style="background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); color: white;">Pro
+                        Plan</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-area">
+
+            <!-- Top Header Bar -->
+            <header class="top-bar">
+                <div class="search-bar">
+                    <i class="ph ph-magnifying-glass"></i>
+                    <input type="text" placeholder="Search projects, data...">
+                </div>
+
+                <div class="top-actions">
+                    <button class="icon-btn">
+                        <i class="ph ph-bell"></i>
+                    </button>
+                    <div style="width: 1px; height: 24px; background-color: var(--border-color); margin: 0 8px;"></div>
+                    <div class="profile-avatar">
+                        JS
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dynamic Views Container -->
+            <div class="view-container">
+
+                <!-- 1. DASHBOARD OVERVIEW PAGE -->
+                <section id="view-dashboard" class="view-section active">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-xl);">
+                        <div>
+                            <h2>Welcome back, John 👋</h2>
+                            <p style="color: var(--text-muted); font-family: var(--font-sans);">Here's what's happening
+                                with your data today.</p>
+                        </div>
+                        <button class="btn btn-primary"
+                            onclick="document.querySelector('.nav-item[data-target=\'view-new-scraper\']').click()">
+                            <i class="ph ph-plus"></i> New Scrape
+                        </button>
+                    </div>
+
+                    <!-- Widgets -->
+                    <div
+                        style="display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--spacing-lg); margin-bottom: var(--spacing-xl);">
+                        <div class="card" style="display: flex; flex-direction: column;">
+                            <span
+                                style="color: var(--text-muted); font-size: 0.85rem; font-weight: 600; text-transform: uppercase;">Total
+                                Projects</span>
+                            <div
+                                style="font-size: 2.25rem; font-family: var(--font-heading); font-weight: 700; color: var(--primary-color);">
+                                42</div>
+                            <span
+                                style="color: var(--success-color); font-size: 0.85rem; font-family: var(--font-sans); display: flex; align-items: center; gap: 4px; margin-top: auto;">
+                                <i class="ph ph-trend-up"></i> +3 this week
+                            </span>
+                        </div>
+                        <div class="card" style="display: flex; flex-direction: column;">
+                            <span
+                                style="color: var(--text-muted); font-size: 0.85rem; font-weight: 600; text-transform: uppercase;">Rows
+                                Collected</span>
+                            <div
+                                style="font-size: 2.25rem; font-family: var(--font-heading); font-weight: 700; color: var(--primary-color);">
+                                1.2M</div>
+                            <span
+                                style="color: var(--success-color); font-size: 0.85rem; font-family: var(--font-sans); display: flex; align-items: center; gap: 4px; margin-top: auto;">
+                                <i class="ph ph-trend-up"></i> +145k this month
+                            </span>
+                        </div>
+                        <div class="card" style="display: flex; flex-direction: column;">
+                            <span
+                                style="color: var(--text-muted); font-size: 0.85rem; font-weight: 600; text-transform: uppercase;">Successful
+                                Runs</span>
+                            <div
+                                style="font-size: 2.25rem; font-family: var(--font-heading); font-weight: 700; color: var(--primary-color);">
+                                8,432</div>
+                            <span
+                                style="color: var(--text-muted); font-size: 0.85rem; font-family: var(--font-sans); display: flex; align-items: center; gap: 4px; margin-top: auto;">
+                                99.8% Success Rate
+                            </span>
+                        </div>
+                        <div class="card" style="display: flex; flex-direction: column;">
+                            <span
+                                style="color: var(--text-muted); font-size: 0.85rem; font-weight: 600; text-transform: uppercase;">Automations</span>
+                            <div
+                                style="font-size: 2.25rem; font-family: var(--font-heading); font-weight: 700; color: var(--primary-color);">
+                                12</div>
+                            <span
+                                style="color: var(--text-muted); font-size: 0.85rem; font-family: var(--font-sans); display: flex; align-items: center; gap: 4px; margin-top: auto;">
+                                Next run in 45 mins
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Charts Area -->
+                    <div
+                        style="display: grid; grid-template-columns: 2fr 1fr; gap: var(--spacing-lg); margin-bottom: var(--spacing-xl);">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Scraping Activity Over Time</h3>
+                            </div>
+                            <div style="height: 300px; width: 100%;">
+                                <canvas id="activityChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Data Volume</h3>
+                            </div>
+                            <div style="height: 300px; width: 100%;">
+                                <canvas id="volumeChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Section: Quick Scrape & Recent -->
+                    <div style="display: grid; grid-template-columns: 1fr 2fr; gap: var(--spacing-lg);">
+
+                        <!-- Quick Scrape Input -->
+                        <div class="card"
+                            style="background: linear-gradient(135deg, var(--bg-surface) 0%, rgba(15, 14, 71, 0.03) 100%);">
+                            <div class="card-header">
+                                <h3 class="card-title" style="display: flex; align-items: center; gap: 8px;">
+                                    <div
+                                        style="background-color: var(--primary-color); color: white; width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                                        <i class="ph ph-lightning"></i>
+                                    </div>
+                                    Quick Scrape
+                                </h3>
+                            </div>
+                            <p
+                                style="font-family: var(--font-sans); font-size: 0.9rem; color: var(--text-muted); margin-bottom: var(--spacing-md);">
+                                Paste a URL below to instantly detect list data and start scraping.</p>
+
+                            <div class="form-group">
+                                <input type="url" class="form-control" placeholder="https://example.com/products"
+                                    style="margin-bottom: var(--spacing-sm);">
+                                <button class="btn btn-primary" style="width: 100%; justify-content: center;">
+                                    <i class="ph ph-play"></i> Start Auto-Detection
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Recent Projects -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Recent Activity</h3>
+                                <a href="#" style="font-family: var(--font-sans); font-size: 0.85rem; font-weight: 500;"
+                                    onclick="document.querySelector('.nav-item[data-target=\'view-projects\']').click()">View
+                                    All</a>
+                            </div>
+                            <div class="table-responsive">
+                                <table style="width: 100%;">
+                                    <tbody>
+                                        <tr>
+                                            <td style="padding: 12px 0; border-bottom: 1px solid var(--border-color);">
+                                                <div style="display: flex; align-items: center; gap: 12px;">
+                                                    <div
+                                                        style="width: 40px; height: 40px; background-color: rgba(16, 185, 129, 0.1); color: var(--success-color); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">
+                                                        <i class="ph ph-check-circle"></i>
+                                                    </div>
+                                                    <div>
+                                                        <div style="font-weight: 600; color: var(--primary-color);">
+                                                            Amazon Headphones Prices</div>
+                                                        <div style="font-size: 0.8rem; color: var(--text-muted);">
+                                                            Extracted 450 rows • 10 mins ago</div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td
+                                                style="padding: 12px 0; border-bottom: 1px solid var(--border-color); text-align: right;">
+                                                <button class="btn btn-secondary"
+                                                    style="padding: 4px 8px; font-size: 0.8rem;">Download</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding: 12px 0; border-bottom: 1px solid var(--border-color);">
+                                                <div style="display: flex; align-items: center; gap: 12px;">
+                                                    <div
+                                                        style="width: 40px; height: 40px; background-color: rgba(59, 130, 246, 0.1); color: var(--info-color); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">
+                                                        <i class="ph ph-spinner-gap"
+                                                            style="animation: spin 2s linear infinite;"></i>
+                                                    </div>
+                                                    <div>
+                                                        <div style="font-weight: 600; color: var(--primary-color);">Yelp
+                                                            Restaurants SF</div>
+                                                        <div style="font-size: 0.8rem; color: var(--text-muted);">
+                                                            Running • Page 12 of 50</div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td
+                                                style="padding: 12px 0; border-bottom: 1px solid var(--border-color); text-align: right;">
+                                                <span class="badge badge-info">Active</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding: 12px 0; border-bottom: none;">
+                                                <div style="display: flex; align-items: center; gap: 12px;">
+                                                    <div
+                                                        style="width: 40px; height: 40px; background-color: rgba(239, 68, 68, 0.1); color: var(--danger-color); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">
+                                                        <i class="ph ph-warning-circle"></i>
+                                                    </div>
+                                                    <div>
+                                                        <div style="font-weight: 600; color: var(--primary-color);">
+                                                            Zillow Real Estate Data</div>
+                                                        <div style="font-size: 0.8rem; color: var(--text-muted);">
+                                                            Failed: Blocked by Captcha • 2 hours ago</div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td style="padding: 12px 0; border-bottom: none; text-align: right;">
+                                                <button class="btn btn-secondary"
+                                                    style="padding: 4px 8px; font-size: 0.8rem;">Retry</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <style>
+                                    @keyframes spin {
+                                        100% {
+                                            transform: rotate(360deg);
+                                        }
+                                    }
+                                </style>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 2. NEW SCRAPER FLOW -->
+                <section id="view-new-scraper" class="view-section">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-xl);">
+                        <div>
+                            <h2>Create New Scraper</h2>
+                            <p style="color: var(--text-muted); font-family: var(--font-sans);">Follow the steps to
+                                extract data from any website.</p>
+                        </div>
+                    </div>
+
+                    <div class="card" style="margin-bottom: var(--spacing-xl); padding: var(--spacing-xl);">
+
+                        <!-- Wizard Progress -->
+                        <div
+                            style="display: flex; justify-content: space-between; margin-bottom: var(--spacing-2xl); position: relative;">
+                            <div
+                                style="position: absolute; top: 16px; left: 0; right: 0; height: 2px; background-color: var(--border-color); z-index: 1;">
+                            </div>
+
+                            <div class="wizard-step active"
+                                style="position: relative; z-index: 2; text-align: center; width: 20%;">
+                                <div
+                                    style="width: 32px; height: 32px; border-radius: 50%; background-color: var(--primary-color); color: white; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-sm); font-weight: 600; box-shadow: 0 0 0 4px var(--bg-surface);">
+                                    1</div>
+                                <div
+                                    style="font-size: 0.85rem; font-family: var(--font-sans); font-weight: 600; color: var(--primary-color);">
+                                    Setup URL</div>
+                            </div>
+                            <div class="wizard-step"
+                                style="position: relative; z-index: 2; text-align: center; width: 20%;">
+                                <div
+                                    style="width: 32px; height: 32px; border-radius: 50%; background-color: var(--border-color); color: var(--text-muted); display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-sm); font-weight: 600; box-shadow: 0 0 0 4px var(--bg-surface);">
+                                    2</div>
+                                <div
+                                    style="font-size: 0.85rem; font-family: var(--font-sans); font-weight: 500; color: var(--text-muted);">
+                                    Detect Elements</div>
+                            </div>
+                            <div class="wizard-step"
+                                style="position: relative; z-index: 2; text-align: center; width: 20%;">
+                                <div
+                                    style="width: 32px; height: 32px; border-radius: 50%; background-color: var(--border-color); color: var(--text-muted); display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-sm); font-weight: 600; box-shadow: 0 0 0 4px var(--bg-surface);">
+                                    3</div>
+                                <div
+                                    style="font-size: 0.85rem; font-family: var(--font-sans); font-weight: 500; color: var(--text-muted);">
+                                    Select Fields</div>
+                            </div>
+                            <div class="wizard-step"
+                                style="position: relative; z-index: 2; text-align: center; width: 20%;">
+                                <div
+                                    style="width: 32px; height: 32px; border-radius: 50%; background-color: var(--border-color); color: var(--text-muted); display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-sm); font-weight: 600; box-shadow: 0 0 0 4px var(--bg-surface);">
+                                    4</div>
+                                <div
+                                    style="font-size: 0.85rem; font-family: var(--font-sans); font-weight: 500; color: var(--text-muted);">
+                                    Preview Table</div>
+                            </div>
+                            <div class="wizard-step"
+                                style="position: relative; z-index: 2; text-align: center; width: 20%;">
+                                <div
+                                    style="width: 32px; height: 32px; border-radius: 50%; background-color: var(--border-color); color: var(--text-muted); display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-sm); font-weight: 600; box-shadow: 0 0 0 4px var(--bg-surface);">
+                                    5</div>
+                                <div
+                                    style="font-size: 0.85rem; font-family: var(--font-sans); font-weight: 500; color: var(--text-muted);">
+                                    Save Project</div>
+                            </div>
+                        </div>
+
+                        <!-- Step 1 Content -->
+                        <div id="scraper-step-1">
+                            <h3 style="margin-bottom: var(--spacing-md);">Enter Target Website</h3>
+                            <div class="form-group">
+                                <label class="form-label">Website URL</label>
+                                <input type="url" class="form-control" placeholder="https://amazon.com/s?k=headphones"
+                                    style="margin-bottom: var(--spacing-xs);">
+                                <p style="font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-sans);">
+                                    Paste the exact URL of the search results or list page you want to scrape.</p>
+                            </div>
+
+                            <div class="form-group" style="margin-top: var(--spacing-lg);">
+                                <label class="form-label">Proxy & Browser Settings (Advanced)</label>
+                                <div style="display: flex; gap: var(--spacing-md);">
+                                    <label
+                                        style="display: flex; align-items: center; gap: 8px; font-family: var(--font-sans); font-size: 0.9rem; cursor: pointer;">
+                                        <input type="checkbox" checked> Use Residential Proxies (+0.05 credits/req)
+                                    </label>
+                                    <label
+                                        style="display: flex; align-items: center; gap: 8px; font-family: var(--font-sans); font-size: 0.9rem; cursor: pointer;">
+                                        <input type="checkbox" checked> Auto-Solve Captchas
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div
+                                style="text-align: right; margin-top: var(--spacing-2xl); border-top: 1px solid var(--border-color); padding-top: var(--spacing-lg);">
+                                <button class="btn btn-primary" onclick="nextScraperStep()">
+                                    Detect Layout <i class="ph ph-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 2 Content (Mocked detection) -->
+                        <div id="scraper-step-2" style="display: none;">
+                            <div
+                                style="display: flex; align-items: center; gap: 16px; margin-bottom: var(--spacing-lg);">
+                                <div
+                                    style="width: 48px; height: 48px; border-radius: 50%; background-color: rgba(16, 185, 129, 0.1); color: var(--success-color); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                                    <i class="ph ph-check-circle"></i>
+                                </div>
+                                <div>
+                                    <h3 style="margin: 0;">AI Auto-Detection Complete</h3>
+                                    <p style="margin: 0; color: var(--text-muted); font-family: var(--font-sans);">Found
+                                        24 list elements matching similar patterns.</p>
+                                </div>
+                            </div>
+
+                            <div
+                                style="border: 1px dashed var(--accent-color); padding: var(--spacing-lg); border-radius: var(--border-radius-md); background-color: var(--bg-main); display: flex; justify-content: center; align-items: center; height: 200px; margin-bottom: var(--spacing-lg);">
+                                <img src="https://via.placeholder.com/800x150?text=Browser+Preview+with+Highlights"
+                                    alt="Browser Preview"
+                                    style="max-width: 100%; max-height: 100%; border-radius: 4px; box-shadow: var(--shadow-sm);">
+                            </div>
+
+                            <div
+                                style="display: flex; justify-content: space-between; margin-top: var(--spacing-2xl); border-top: 1px solid var(--border-color); padding-top: var(--spacing-lg);">
+                                <button class="btn btn-secondary" onclick="prevScraperStep()">
+                                    <i class="ph ph-arrow-left"></i> Back
+                                </button>
+                                <button class="btn btn-primary" onclick="nextScraperStep()">
+                                    Continue to Fields <i class="ph ph-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 3 Content -->
+                        <div id="scraper-step-3" style="display: none;">
+                            <h3 style="margin-bottom: var(--spacing-md);">Select & Name Fields</h3>
+
+                            <div class="table-responsive">
+                                <table style="width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <th>Detected Element Type</th>
+                                            <th>Extracted Sample</th>
+                                            <th>Column Name</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><span class="badge"
+                                                    style="background: rgba(15,14,71,0.1); color: var(--primary-color);">H2
+                                                    Text</span></td>
+                                            <td style="font-family: monospace; font-size: 0.85rem;">"Sony WH-1000XM5
+                                                Wireless..."</td>
+                                            <td><input type="text" class="form-control" value="Product Name"
+                                                    style="padding: 6px 12px; height: 32px;"></td>
+                                            <td><button class="icon-btn" style="color: var(--danger-color);"><i
+                                                        class="ph ph-trash"></i></button></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="badge"
+                                                    style="background: rgba(15,14,71,0.1); color: var(--primary-color);">Span
+                                                    (.price)</span></td>
+                                            <td style="font-family: monospace; font-size: 0.85rem;">"$348.00"</td>
+                                            <td><input type="text" class="form-control" value="Price"
+                                                    style="padding: 6px 12px; height: 32px;"></td>
+                                            <td><button class="icon-btn" style="color: var(--danger-color);"><i
+                                                        class="ph ph-trash"></i></button></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="badge"
+                                                    style="background: rgba(15,14,71,0.1); color: var(--primary-color);">Image
+                                                    SRC</span></td>
+                                            <td style="font-family: monospace; font-size: 0.85rem;">"https://m.media..."
+                                            </td>
+                                            <td><input type="text" class="form-control" value="Image_URL"
+                                                    style="padding: 6px 12px; height: 32px;"></td>
+                                            <td><button class="icon-btn" style="color: var(--danger-color);"><i
+                                                        class="ph ph-trash"></i></button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <button class="btn btn-secondary"
+                                    style="margin-top: var(--spacing-md); font-size: 0.85rem;"><i
+                                        class="ph ph-plus"></i> Add Custom Field selector</button>
+                            </div>
+
+                            <div
+                                style="display: flex; justify-content: space-between; margin-top: var(--spacing-2xl); border-top: 1px solid var(--border-color); padding-top: var(--spacing-lg);">
+                                <button class="btn btn-secondary" onclick="prevScraperStep()">
+                                    <i class="ph ph-arrow-left"></i> Back
+                                </button>
+                                <button class="btn btn-primary" onclick="nextScraperStep()">
+                                    Generate Preview <i class="ph ph-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 4 Content -->
+                        <div id="scraper-step-4" style="display: none;">
+                            <h3 style="margin-bottom: var(--spacing-md);">Sample Data Preview</h3>
+                            <p style="font-family: var(--font-sans); color: var(--text-muted); font-size: 0.9rem;">Here
+                                is a sample of the first 3 rows extracted using your configuration.</p>
+
+                            <div class="table-responsive"
+                                style="border: 1px solid var(--border-color); border-radius: var(--border-radius-md); overflow: hidden;">
+                                <table style="width: 100%; margin: 0;">
+                                    <thead style="background-color: var(--bg-main);">
+                                        <tr>
+                                            <th>Product Name</th>
+                                            <th>Price</th>
+                                            <th>Image_URL</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td style="font-weight: 500;">Sony WH-1000XM5 Wireless Noise Canceling
+                                                Headphones</td>
+                                            <td>$348.00</td>
+                                            <td><a href="#"
+                                                    style="font-size: 0.8rem;">https://m.media-amazon.com/images/I...</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight: 500;">Apple AirPods Max - Space Gray</td>
+                                            <td>$549.00</td>
+                                            <td><a href="#"
+                                                    style="font-size: 0.8rem;">https://m.media-amazon.com/images/I...</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight: 500;">Bose QuietComfort 45 Bluetooth Wireless...
+                                            </td>
+                                            <td>$329.00</td>
+                                            <td><a href="#"
+                                                    style="font-size: 0.8rem;">https://m.media-amazon.com/images/I...</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div style="margin-top: var(--spacing-md);">
+                                <label
+                                    style="display: flex; align-items: center; gap: 8px; font-family: var(--font-sans); font-size: 0.9rem;">
+                                    <input type="checkbox" checked> Pagination: Follow "Next Page" links automatically
+                                </label>
+                                <div class="form-group" style="margin-top: 8px; margin-left: 24px; max-width: 200px;">
+                                    <label class="form-label" style="font-size: 0.8rem;">Max Pages to Scrape</label>
+                                    <input type="number" class="form-control" value="50"
+                                        style="padding: 6px 12px; height: 32px;">
+                                </div>
+                            </div>
+
+                            <div
+                                style="display: flex; justify-content: space-between; margin-top: var(--spacing-2xl); border-top: 1px solid var(--border-color); padding-top: var(--spacing-lg);">
+                                <button class="btn btn-secondary" onclick="prevScraperStep()">
+                                    <i class="ph ph-arrow-left"></i> Back
+                                </button>
+                                <button class="btn btn-primary" onclick="nextScraperStep()">
+                                    Looks Good <i class="ph ph-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 5 Content -->
+                        <div id="scraper-step-5" style="display: none;">
+                            <div style="text-align: center; max-width: 400px; margin: 0 auto;">
+                                <div
+                                    style="width: 64px; height: 64px; border-radius: 50%; background-color: rgba(16, 185, 129, 0.1); color: var(--success-color); display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto var(--spacing-md);">
+                                    <i class="ph ph-rocket-launch"></i>
+                                </div>
+                                <h3 style="margin-bottom: var(--spacing-sm);">Ready to Launch!</h3>
+                                <p
+                                    style="font-family: var(--font-sans); color: var(--text-muted); margin-bottom: var(--spacing-lg);">
+                                    Give your project a name and start the extraction process immediately.</p>
+
+                                <div class="form-group" style="text-align: left;">
+                                    <label class="form-label">Project Name</label>
+                                    <input type="text" class="form-control" value="Amazon Headphones Pricing"
+                                        style="font-weight: 500;">
+                                </div>
+
+                                <button class="btn btn-primary"
+                                    style="width: 100%; justify-content: center; margin-top: var(--spacing-md); padding: 12px;"
+                                    onclick="document.querySelector('.nav-item[data-target=\'view-projects\']').click()">
+                                    <i class="ph ph-play-circle"></i> Save & Start Scraping
+                                </button>
+                            </div>
+
+                            <div
+                                style="display: flex; justify-content: space-between; margin-top: var(--spacing-2xl); border-top: 1px solid var(--border-color); padding-top: var(--spacing-lg);">
+                                <button class="btn btn-secondary" onclick="prevScraperStep()">
+                                    <i class="ph ph-arrow-left"></i> Back to Preview
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <style>
+                        .wizard-step.active div:first-child {
+                            background-color: var(--primary-color);
+                            color: white;
+                        }
+
+                        .wizard-step.active div:last-child {
+                            color: var(--primary-color);
+                        }
+
+                        .wizard-step.completed div:first-child {
+                            background-color: var(--success-color);
+                            color: white;
+                        }
+                    </style>
+                </section>
+
+                <!-- 3. PROJECTS PAGE -->
+                <section id="view-projects" class="view-section">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-xl);">
+                        <div>
+                            <h2>Your Projects</h2>
+                            <p style="color: var(--text-muted); font-family: var(--font-sans);">Manage and monitor all
+                                your scraping tasks.</p>
+                        </div>
+                        <button class="btn btn-primary"
+                            onclick="document.querySelector('.nav-item[data-target=\'view-new-scraper\']').click()">
+                            <i class="ph ph-plus"></i> New Project
+                        </button>
+                    </div>
+
+                    <div class="card">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-md);">
+                            <div class="search-bar" style="width: 250px;">
+                                <i class="ph ph-magnifying-glass"></i>
+                                <input type="text" placeholder="Search projects...">
+                            </div>
+                            <div style="display: flex; gap: var(--spacing-sm);">
+                                <button class="btn btn-secondary">
+                                    <i class="ph ph-funnel"></i> Filter
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="data-table" style="width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <th>Project Name</th>
+                                        <th>Target Website</th>
+                                        <th>Last Run</th>
+                                        <th>Status</th>
+                                        <th>Schedule</th>
+                                        <th style="text-align: right;">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="font-weight: 600; color: var(--primary-color);">Amazon Headphones
+                                            Pricing</td>
+                                        <td><a href="#"
+                                                style="font-family: var(--font-sans); font-size: 0.85rem; color: var(--accent-color);">amazon.com</a>
+                                        </td>
+                                        <td><span
+                                                style="font-family: var(--font-sans); font-size: 0.85rem; color: var(--text-muted);">2
+                                                mins ago</span></td>
+                                        <td><span class="badge badge-success">Completed</span></td>
+                                        <td><span
+                                                style="font-family: var(--font-sans); font-size: 0.85rem; color: var(--text-muted);">Daily</span>
+                                        </td>
+                                        <td style="text-align: right;">
+                                            <button class="icon-btn" title="Run Now"><i class="ph ph-play"></i></button>
+                                            <button class="icon-btn" title="View Data"><i
+                                                    class="ph ph-table"></i></button>
+                                            <button class="icon-btn" title="Settings"><i
+                                                    class="ph ph-gear"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight: 600; color: var(--primary-color);">Yelp Restaurants SF
+                                        </td>
+                                        <td><a href="#"
+                                                style="font-family: var(--font-sans); font-size: 0.85rem; color: var(--accent-color);">yelp.com</a>
+                                        </td>
+                                        <td><span
+                                                style="font-family: var(--font-sans); font-size: 0.85rem; color: var(--text-muted);">Running
+                                                Now</span></td>
+                                        <td><span class="badge badge-info"><i class="ph ph-spinner-gap"
+                                                    style="animation: spin 2s linear infinite; margin-right: 4px;"></i>
+                                                Active</span></td>
+                                        <td><span
+                                                style="font-family: var(--font-sans); font-size: 0.85rem; color: var(--text-muted);">Weekly</span>
+                                        </td>
+                                        <td style="text-align: right;">
+                                            <button class="icon-btn" style="color: var(--danger-color);" title="Stop"><i
+                                                    class="ph ph-stop"></i></button>
+                                            <button class="icon-btn" title="View Data"><i
+                                                    class="ph ph-table"></i></button>
+                                            <button class="icon-btn" title="Settings"><i
+                                                    class="ph ph-gear"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight: 600; color: var(--primary-color);">Zillow Real Estate
+                                            Data</td>
+                                        <td><a href="#"
+                                                style="font-family: var(--font-sans); font-size: 0.85rem; color: var(--accent-color);">zillow.com</a>
+                                        </td>
+                                        <td><span
+                                                style="font-family: var(--font-sans); font-size: 0.85rem; color: var(--text-muted);">2
+                                                hours ago</span></td>
+                                        <td><span class="badge badge-danger">Failed</span></td>
+                                        <td><span
+                                                style="font-family: var(--font-sans); font-size: 0.85rem; color: var(--text-muted);">Manual</span>
+                                        </td>
+                                        <td style="text-align: right;">
+                                            <button class="icon-btn" title="Run Now"><i class="ph ph-play"></i></button>
+                                            <button class="icon-btn" title="View Data"><i
+                                                    class="ph ph-table"></i></button>
+                                            <button class="icon-btn" title="Settings"><i
+                                                    class="ph ph-gear"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight: 600; color: var(--primary-color);">G2 Software Reviews
+                                        </td>
+                                        <td><a href="#"
+                                                style="font-family: var(--font-sans); font-size: 0.85rem; color: var(--accent-color);">g2.com</a>
+                                        </td>
+                                        <td><span
+                                                style="font-family: var(--font-sans); font-size: 0.85rem; color: var(--text-muted);">Yesterday</span>
+                                        </td>
+                                        <td><span class="badge badge-success">Completed</span></td>
+                                        <td><span
+                                                style="font-family: var(--font-sans); font-size: 0.85rem; color: var(--text-muted);">Monthly</span>
+                                        </td>
+                                        <td style="text-align: right;">
+                                            <button class="icon-btn" title="Run Now"><i class="ph ph-play"></i></button>
+                                            <button class="icon-btn" title="View Data"><i
+                                                    class="ph ph-table"></i></button>
+                                            <button class="icon-btn" title="Settings"><i
+                                                    class="ph ph-gear"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--spacing-md); font-family: var(--font-sans); font-size: 0.85rem; color: var(--text-muted);">
+                            <span>Showing 1 to 4 of 42 projects</span>
+                            <div style="display: flex; gap: 8px;">
+                                <button class="btn btn-secondary" style="padding: 4px 12px;" disabled>Previous</button>
+                                <button class="btn btn-secondary" style="padding: 4px 12px;">Next</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 4. DATA TABLES PAGE -->
+                <section id="view-data-tables" class="view-section">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-xl);">
+                        <div>
+                            <h2>Data Tables</h2>
+                            <div style="display: flex; align-items: center; gap: 8px; margin-top: 4px;">
+                                <span class="badge"
+                                    style="background: rgba(15,14,71,0.1); color: var(--primary-color);">Amazon
+                                    Headphones Pricing</span>
+                                <span
+                                    style="color: var(--text-muted); font-size: 0.85rem; font-family: var(--font-sans);">Last
+                                    updated 2 mins ago</span>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: var(--spacing-sm);">
+                            <button class="btn btn-secondary"><i class="ph ph-file-csv"></i> Export CSV</button>
+                            <button class="btn btn-secondary"><i class="ph ph-file-xls"></i> Export Excel</button>
+                            <button class="btn btn-secondary"><i class="ph ph-code"></i> Export JSON</button>
+                        </div>
+                    </div>
+
+                    <div class="card" style="padding: 0; overflow: hidden;">
+                        <!-- Toolbar -->
+                        <div
+                            style="padding: var(--spacing-md) var(--spacing-lg); border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; background-color: var(--bg-surface);">
+                            <div class="search-bar" style="width: 300px;">
+                                <i class="ph ph-magnifying-glass"></i>
+                                <input type="text" placeholder="Search data...">
+                            </div>
+                            <div style="display: flex; gap: var(--spacing-sm);">
+                                <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 0.85rem;"><i
+                                        class="ph ph-funnel"></i> Filter</button>
+                                <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 0.85rem;"><i
+                                        class="ph ph-columns"></i> Columns</button>
+                                <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 0.85rem;"><i
+                                        class="ph ph-arrows-down-up"></i> Sort</button>
+                            </div>
+                        </div>
+
+                        <!-- Spreadsheet Table -->
+                        <div class="table-responsive" style="max-height: 600px; overflow-y: auto;">
+                            <table class="data-table" style="width: 100%; white-space: nowrap;">
+                                <thead style="position: sticky; top: 0; z-index: 10;">
+                                    <tr>
+                                        <th style="width: 40px; text-align: center;"><input type="checkbox"></th>
+                                        <th>ID <i class="ph ph-caret-down" style="color: var(--text-muted);"></i></th>
+                                        <th>Product Name <i class="ph ph-caret-up-down"
+                                                style="color: var(--text-muted);"></i></th>
+                                        <th>Price <i class="ph ph-caret-up-down" style="color: var(--text-muted);"></i>
+                                        </th>
+                                        <th>Stock Status <i class="ph ph-caret-up-down"
+                                                style="color: var(--text-muted);"></i></th>
+                                        <th>Rating <i class="ph ph-caret-up-down" style="color: var(--text-muted);"></i>
+                                        </th>
+                                        <th>Review Count <i class="ph ph-caret-up-down"
+                                                style="color: var(--text-muted);"></i></th>
+                                        <th>URL <i class="ph ph-caret-up-down" style="color: var(--text-muted);"></i>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody style="font-family: var(--font-sans); font-size: 0.9rem;">
+                                    <tr>
+                                        <td style="text-align: center;"><input type="checkbox"></td>
+                                        <td style="color: var(--text-muted);">1001</td>
+                                        <td style="font-weight: 500;">Sony WH-1000XM5 Wireless Noise Canceling</td>
+                                        <td style="font-family: monospace;">$348.00</td>
+                                        <td><span class="badge badge-success">In Stock</span></td>
+                                        <td>4.8</td>
+                                        <td>12,453</td>
+                                        <td><a href="#" style="color: var(--info-color);">amazon.com/dp/B09XS7JWHH</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: center;"><input type="checkbox"></td>
+                                        <td style="color: var(--text-muted);">1002</td>
+                                        <td style="font-weight: 500;">Apple AirPods Max - Space Gray</td>
+                                        <td style="font-family: monospace;">$549.00</td>
+                                        <td><span class="badge badge-success">In Stock</span></td>
+                                        <td>4.6</td>
+                                        <td>9,821</td>
+                                        <td><a href="#" style="color: var(--info-color);">amazon.com/dp/B08PZHYWJS</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: center;"><input type="checkbox"></td>
+                                        <td style="color: var(--text-muted);">1003</td>
+                                        <td style="font-weight: 500;">Bose QuietComfort 45 Bluetooth Wireless</td>
+                                        <td style="font-family: monospace;">$329.00</td>
+                                        <td><span class="badge badge-warning">Low Stock</span></td>
+                                        <td>4.7</td>
+                                        <td>15,902</td>
+                                        <td><a href="#" style="color: var(--info-color);">amazon.com/dp/B098FH5P3C</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: center;"><input type="checkbox"></td>
+                                        <td style="color: var(--text-muted);">1004</td>
+                                        <td style="font-weight: 500;">Sennheiser Momentum 4 Wireless</td>
+                                        <td style="font-family: monospace;">$299.95</td>
+                                        <td><span class="badge badge-success">In Stock</span></td>
+                                        <td>4.5</td>
+                                        <td>3,412</td>
+                                        <td><a href="#" style="color: var(--info-color);">amazon.com/dp/B0B6622S5Z</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: center;"><input type="checkbox"></td>
+                                        <td style="color: var(--text-muted);">1005</td>
+                                        <td style="font-weight: 500;">Sony WF-1000XM4 Noise Canceling Earbuds</td>
+                                        <td style="font-family: monospace;">$278.00</td>
+                                        <td><span class="badge"
+                                                style="background: var(--bg-hover); color: var(--text-muted);">Out of
+                                                Stock</span></td>
+                                        <td>4.4</td>
+                                        <td>22,105</td>
+                                        <td><a href="#" style="color: var(--info-color);">amazon.com/dp/B094C4VDJZ</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: center;"><input type="checkbox"></td>
+                                        <td style="color: var(--text-muted);">1006</td>
+                                        <td style="font-weight: 500;">Beats Studio Pro - Wireless Bluetooth</td>
+                                        <td style="font-family: monospace;">$199.99</td>
+                                        <td><span class="badge badge-success">In Stock</span></td>
+                                        <td>4.3</td>
+                                        <td>6,541</td>
+                                        <td><a href="#" style="color: var(--info-color);">amazon.com/dp/B0C8PTR7DD</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Pagination Footer -->
+                        <div
+                            style="padding: var(--spacing-md) var(--spacing-lg); border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; background-color: var(--bg-surface);">
+                            <span
+                                style="font-family: var(--font-sans); font-size: 0.85rem; color: var(--text-muted);">Showing
+                                1 to 6 of 4,128 rows</span>
+                            <div style="display: flex; gap: 8px;">
+                                <button class="btn btn-secondary" style="padding: 4px 12px;" disabled>Previous</button>
+                                <button class="btn btn-primary"
+                                    style="padding: 4px 12px; min-width: 32px; display: inline-flex; justify-content: center; align-items: center; border-radius: 4px;">1</button>
+                                <button class="btn btn-secondary"
+                                    style="padding: 4px 12px; min-width: 32px; display: inline-flex; justify-content: center; align-items: center; border-radius: 4px; border: none;">2</button>
+                                <button class="btn btn-secondary"
+                                    style="padding: 4px 12px; min-width: 32px; display: inline-flex; justify-content: center; align-items: center; border-radius: 4px; border: none;">3</button>
+                                <span style="color: var(--text-muted); padding: 4px 8px;">...</span>
+                                <button class="btn btn-secondary" style="padding: 4px 12px;">Next</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 5. AUTOMATION PAGE -->
+                <section id="view-automation" class="view-section">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-xl);">
+                        <div>
+                            <h2>Automation Settings</h2>
+                            <p style="color: var(--text-muted); font-family: var(--font-sans);">Configure schedules and
+                                automatic actions for your projects.</p>
+                        </div>
+                        <button class="btn btn-primary">
+                            <i class="ph ph-plus"></i> New Automation
+                        </button>
+                    </div>
+
+                    <div class="card" style="margin-bottom: var(--spacing-lg);">
+                        <div class="card-header"
+                            style="border-bottom: 1px solid var(--border-color); padding-bottom: var(--spacing-md); margin-bottom: var(--spacing-md);">
+                            <div>
+                                <h3 style="margin: 0; display: flex; align-items: center; gap: 8px;"><i
+                                        class="ph ph-calendar-clock" style="color: var(--primary-color);"></i> Amazon
+                                    Daily Scrape</h3>
+                                <p
+                                    style="margin: 4px 0 0 0; font-size: 0.85rem; color: var(--text-muted); font-family: var(--font-sans);">
+                                    Target Project: Amazon Headphones Pricing</p>
+                            </div>
+                            <label class="toggle">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-xl);">
+                            <div>
+                                <div class="form-group">
+                                    <label class="form-label">Schedule Frequency</label>
+                                    <select class="form-control"
+                                        style="appearance: none; background-image: url('data:image/svg+xml;utf8,<svg fill=\"
+                                        %236b7280\" height=\"24\" viewBox=\"0 0 24 24\" width=\"24\"
+                                        xmlns=\"http://www.w3.org/2000/svg\">
+                                        <path d=\"M7 10l5 5 5-5z\" />
+                                        <path d=\"M0 0h24v24H0z\" fill=\"none\" /></svg>'); background-repeat:
+                                        no-repeat; background-position-x: 98%; background-position-y: 50%;">
+                                        <option>Daily</option>
+                                        <option>Hourly</option>
+                                        <option>Weekly</option>
+                                        <option>Custom Cron</option>
+                                    </select>
+                                </div>
+                                <div class="form-group"
+                                    style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-md);">
+                                    <div>
+                                        <label class="form-label">Time</label>
+                                        <input type="time" class="form-control" value="00:00">
+                                    </div>
+                                    <div>
+                                        <label class="form-label">Timezone</label>
+                                        <select class="form-control" style="appearance: none;">
+                                            <option>UTC (GMT+0)</option>
+                                            <option selected>PST (GMT-8)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                style="background-color: var(--bg-main); padding: var(--spacing-md); border-radius: var(--border-radius-md); border: 1px solid var(--border-color);">
+                                <h4
+                                    style="margin-top: 0; font-family: var(--font-sans); font-size: 0.9rem; color: var(--text-muted);">
+                                    Post-Run Actions</h4>
+
+                                <label
+                                    style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border-color);">
+                                    <span
+                                        style="font-family: var(--font-sans); font-size: 0.9rem; font-weight: 500;">Email
+                                        Excel Report</span>
+                                    <input type="checkbox" checked>
+                                </label>
+
+                                <label
+                                    style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border-color);">
+                                    <span
+                                        style="font-family: var(--font-sans); font-size: 0.9rem; font-weight: 500;">Send
+                                        Webhook on Success</span>
+                                    <input type="checkbox" checked>
+                                </label>
+
+                                <label
+                                    style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0;">
+                                    <span
+                                        style="font-family: var(--font-sans); font-size: 0.9rem; font-weight: 500; color: var(--danger-color);">Alert
+                                        on Error</span>
+                                    <input type="checkbox" checked>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div
+                            style="background-color: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: var(--border-radius-sm); padding: var(--spacing-sm) var(--spacing-md); margin-top: var(--spacing-lg); color: var(--success-color); font-family: var(--font-sans); font-size: 0.85rem; display: flex; align-items: center; gap: 8px;">
+                            <i class="ph ph-info"></i> Next run scheduled for: Tomorrow at 12:00 AM PST
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 6. EXPORTS PAGE -->
+                <section id="view-exports" class="view-section">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-xl);">
+                        <div>
+                            <h2>Exports History</h2>
+                            <p style="color: var(--text-muted); font-family: var(--font-sans);">Download previously
+                                generated data files.</p>
+                        </div>
+                    </div>
+
+                    <div class="card" style="padding: 0; overflow: hidden;">
+                        <table class="data-table" style="width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>File Name</th>
+                                    <th>Project</th>
+                                    <th>Format</th>
+                                    <th>Date Generated</th>
+                                    <th>Size</th>
+                                    <th style="text-align: right;">Download</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="font-weight: 500; display: flex; align-items: center; gap: 8px;">
+                                        <i class="ph ph-file-csv" style="font-size: 1.5rem; color: #10b981;"></i>
+                                        amazon_headphones_2026-02-28.csv
+                                    </td>
+                                    <td>Amazon Headphones Pricing</td>
+                                    <td><span class="badge"
+                                            style="background: rgba(16, 185, 129, 0.1); color: #10b981;">CSV</span></td>
+                                    <td style="color: var(--text-muted); font-family: var(--font-sans);">Feb 28, 2026
+                                        08:30 AM</td>
+                                    <td style="color: var(--text-muted); font-family: var(--font-sans);">1.2 MB</td>
+                                    <td style="text-align: right;">
+                                        <button class="btn btn-primary"
+                                            style="padding: 4px 12px; font-size: 0.85rem;"><i
+                                                class="ph ph-download-simple"></i> Download</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: 500; display: flex; align-items: center; gap: 8px;">
+                                        <i class="ph ph-file-xls" style="font-size: 1.5rem; color: #107c41;"></i>
+                                        amazon_headphones_2026-02-27.xlsx
+                                    </td>
+                                    <td>Amazon Headphones Pricing</td>
+                                    <td><span class="badge"
+                                            style="background: rgba(16, 124, 65, 0.1); color: #107c41;">Excel</span>
+                                    </td>
+                                    <td style="color: var(--text-muted); font-family: var(--font-sans);">Feb 27, 2026
+                                        08:30 AM</td>
+                                    <td style="color: var(--text-muted); font-family: var(--font-sans);">1.4 MB</td>
+                                    <td style="text-align: right;">
+                                        <button class="btn btn-primary"
+                                            style="padding: 4px 12px; font-size: 0.85rem;"><i
+                                                class="ph ph-download-simple"></i> Download</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: 500; display: flex; align-items: center; gap: 8px;">
+                                        <i class="ph ph-code" style="font-size: 1.5rem; color: #f59e0b;"></i>
+                                        yelp_sf_restaurants_batch1.json
+                                    </td>
+                                    <td>Yelp Restaurants SF</td>
+                                    <td><span class="badge"
+                                            style="background: rgba(245, 158, 11, 0.1); color: #f59e0b;">JSON</span>
+                                    </td>
+                                    <td style="color: var(--text-muted); font-family: var(--font-sans);">Feb 26, 2026
+                                        04:15 PM</td>
+                                    <td style="color: var(--text-muted); font-family: var(--font-sans);">3.8 MB</td>
+                                    <td style="text-align: right;">
+                                        <button class="btn btn-primary"
+                                            style="padding: 4px 12px; font-size: 0.85rem;"><i
+                                                class="ph ph-download-simple"></i> Download</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- 7. API & INTEGRATIONS PAGE -->
+                <section id="view-api" class="view-section">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-xl);">
+                        <div>
+                            <h2>API & Integrations</h2>
+                            <p style="color: var(--text-muted); font-family: var(--font-sans);">Connect Extractify with
+                                your existing workflow.</p>
+                        </div>
+                        <button class="btn btn-primary">
+                            <i class="ph ph-key"></i> Generate New Key
+                        </button>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: var(--spacing-xl);">
+
+                        <!-- API Keys -->
+                        <div class="card">
+                            <h3 style="margin-bottom: var(--spacing-md); display: flex; align-items: center; gap: 8px;">
+                                <i class="ph ph-key" style="color: var(--primary-color);"></i> API Keys
+                            </h3>
+                            <p
+                                style="font-family: var(--font-sans); font-size: 0.9rem; color: var(--text-muted); margin-bottom: var(--spacing-lg);">
+                                Use these keys to authenticate your requests to the Extractify API.</p>
+
+                            <div
+                                style="border: 1px solid var(--border-color); border-radius: var(--border-radius-md); overflow: hidden; margin-bottom: var(--spacing-lg);">
+                                <table style="width: 100%; font-family: var(--font-sans); font-size: 0.9rem;">
+                                    <thead style="background-color: var(--bg-main);">
+                                        <tr>
+                                            <th style="padding: 12px 16px;">Key Name</th>
+                                            <th style="padding: 12px 16px;">Token</th>
+                                            <th style="padding: 12px 16px;">Created</th>
+                                            <th style="padding: 12px 16px; text-align: right;">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td style="padding: 12px 16px; font-weight: 500;">Production App Server</td>
+                                            <td
+                                                style="padding: 12px 16px; font-family: monospace; color: var(--text-muted);">
+                                                ext_live_8f992n...</td>
+                                            <td style="padding: 12px 16px; color: var(--text-muted);">Oct 12, 2025</td>
+                                            <td style="padding: 12px 16px; text-align: right;">
+                                                <button class="btn btn-secondary"
+                                                    style="padding: 4px 8px; font-size: 0.8rem;"><i
+                                                        class="ph ph-copy"></i> Copy</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding: 12px 16px; font-weight: 500;">Staging Environment</td>
+                                            <td
+                                                style="padding: 12px 16px; font-family: monospace; color: var(--text-muted);">
+                                                ext_test_3m441p...</td>
+                                            <td style="padding: 12px 16px; color: var(--text-muted);">Jan 05, 2026</td>
+                                            <td style="padding: 12px 16px; text-align: right;">
+                                                <button class="btn btn-secondary"
+                                                    style="padding: 4px 8px; font-size: 0.8rem;"><i
+                                                        class="ph ph-copy"></i> Copy</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <h3
+                                style="margin-bottom: var(--spacing-md); display: flex; align-items: center; gap: 8px; margin-top: var(--spacing-2xl);">
+                                <i class="ph ph-webhook" style="color: var(--primary-color);"></i> Global Webhooks
+                            </h3>
+                            <div class="form-group">
+                                <label class="form-label">Endpoint URL</label>
+                                <input type="url" class="form-control"
+                                    value="https://api.yourcompany.com/webhooks/extractify"
+                                    style="font-family: monospace;">
+                                <p
+                                    style="font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-sans); margin-top: 4px;">
+                                    We will send a POST request with the JSON payload whenever a scrape finishes.</p>
+                            </div>
+                        </div>
+
+                        <!-- Integrations Sidebar -->
+                        <div>
+                            <div class="card" style="margin-bottom: var(--spacing-lg);">
+                                <h3 style="margin-bottom: var(--spacing-md);">1-Click Integrations</h3>
+
+                                <div
+                                    style="display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border-color);">
+                                    <div style="display: flex; align-items: center; gap: 12px;">
+                                        <div
+                                            style="width: 32px; height: 32px; background-color: #f7f7f7; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #ff0000;">
+                                            Z</div>
+                                        <span style="font-weight: 500; font-family: var(--font-sans);">Zapier</span>
+                                    </div>
+                                    <button class="btn btn-secondary"
+                                        style="padding: 4px 12px; font-size: 0.8rem;">Connect</button>
+                                </div>
+
+                                <div
+                                    style="display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border-color);">
+                                    <div style="display: flex; align-items: center; gap: 12px;">
+                                        <div
+                                            style="width: 32px; height: 32px; background-color: #0061ff; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-weight: bold; color: white;">
+                                            DB</div>
+                                        <span style="font-weight: 500; font-family: var(--font-sans);">Dropbox</span>
+                                    </div>
+                                    <span class="badge badge-success">Connected</span>
+                                </div>
+
+                                <div
+                                    style="display: flex; align-items: center; justify-content: space-between; padding: 12px 0;">
+                                    <div style="display: flex; align-items: center; gap: 12px;">
+                                        <div
+                                            style="width: 32px; height: 32px; background-color: #0f9d58; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-weight: bold; color: white;">
+                                            GS</div>
+                                        <span style="font-weight: 500; font-family: var(--font-sans);">Google
+                                            Sheets</span>
+                                    </div>
+                                    <button class="btn btn-secondary"
+                                        style="padding: 4px 12px; font-size: 0.8rem;">Connect</button>
+                                </div>
+                            </div>
+
+                            <div class="card"
+                                style="background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%); color: white;">
+                                <h3 style="color: white; margin-bottom: var(--spacing-xs);">Need Help?</h3>
+                                <p
+                                    style="font-family: var(--font-sans); font-size: 0.9rem; margin-bottom: var(--spacing-md); opacity: 0.9;">
+                                    Read our developer documentation to learn about all available endpoints.</p>
+                                <button class="btn btn-secondary"
+                                    style="background-color: white; color: var(--primary-color); border: none; width: 100%;">View
+                                    API Docs</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 8. BILLING PAGE -->
+                <section id="view-billing" class="view-section">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-xl);">
+                        <div>
+                            <h2>Subscription & Billing</h2>
+                            <p style="color: var(--text-muted); font-family: var(--font-sans);">Manage your plan, usage,
+                                and invoices.</p>
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: var(--spacing-xl);">
+                        <!-- Plan Details -->
+                        <div class="card">
+                            <div
+                                style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--spacing-xl); padding-bottom: var(--spacing-lg); border-bottom: 1px solid var(--border-color);">
+                                <div>
+                                    <h3
+                                        style="margin-bottom: var(--spacing-xs); display: flex; align-items: center; gap: 8px;">
+                                        Pro Plan <span class="badge"
+                                            style="background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); color: white;">Active</span>
+                                    </h3>
+                                    <p
+                                        style="font-family: var(--font-sans); font-size: 0.9rem; color: var(--text-muted); margin: 0;">
+                                        $99/month. Next billing date: March 15, 2026</p>
+                                </div>
+                                <div style="display: flex; gap: var(--spacing-sm);">
+                                    <button class="btn btn-secondary">Change Plan</button>
+                                    <button class="btn btn-primary"
+                                        style="background-color: var(--danger-color);">Cancel</button>
+                                </div>
+                            </div>
+
+                            <h3 style="margin-bottom: var(--spacing-md);">Current Billing Cycle Usage</h3>
+
+                            <div style="margin-bottom: var(--spacing-lg);">
+                                <div
+                                    style="display: flex; justify-content: space-between; font-family: var(--font-sans); font-size: 0.9rem; margin-bottom: 8px;">
+                                    <span style="font-weight: 500;">API Credits (Page Loads)</span>
+                                    <span style="font-weight: 600;">84,532 / 100,000</span>
+                                </div>
+                                <div
+                                    style="width: 100%; height: 8px; background-color: var(--bg-hover); border-radius: 4px; overflow: hidden;">
+                                    <div
+                                        style="width: 84.5%; height: 100%; background-color: var(--warning-color); border-radius: 4px;">
+                                    </div>
+                                </div>
+                                <p
+                                    style="font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-sans); margin-top: 4px;">
+                                    You have used 84.5% of your included credits.</p>
+                            </div>
+
+                            <div style="margin-bottom: var(--spacing-lg);">
+                                <div
+                                    style="display: flex; justify-content: space-between; font-family: var(--font-sans); font-size: 0.9rem; margin-bottom: 8px;">
+                                    <span style="font-weight: 500;">Storage (Data Retention)</span>
+                                    <span style="font-weight: 600;">12 GB / 50 GB</span>
+                                </div>
+                                <div
+                                    style="width: 100%; height: 8px; background-color: var(--bg-hover); border-radius: 4px; overflow: hidden;">
+                                    <div
+                                        style="width: 24%; height: 100%; background-color: var(--success-color); border-radius: 4px;">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-secondary"
+                                style="width: 100%; justify-content: center; margin-top: var(--spacing-md);">Buy Add-On
+                                Credits</button>
+                        </div>
+
+                        <!-- Payment Method & Invoices -->
+                        <div>
+                            <div class="card" style="margin-bottom: var(--spacing-lg);">
+                                <div
+                                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-md);">
+                                    <h3 style="margin: 0;">Payment Method</h3>
+                                    <button class="icon-btn" style="width: 28px; height: 28px; font-size: 1rem;"><i
+                                            class="ph ph-pencil-simple"></i></button>
+                                </div>
+
+                                <div
+                                    style="display: flex; align-items: center; gap: 12px; padding: 12px; border: 1px solid var(--border-color); border-radius: var(--border-radius-md);">
+                                    <i class="ph ph-credit-card"
+                                        style="font-size: 1.5rem; color: var(--primary-color);"></i>
+                                    <div style="font-family: var(--font-sans);">
+                                        <div style="font-weight: 500; font-size: 0.9rem;">Visa ending in 4242</div>
+                                        <div style="font-size: 0.8rem; color: var(--text-muted);">Expires 12/28</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <h3 style="margin-bottom: var(--spacing-md);">Recent Invoices</h3>
+                                <div
+                                    style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border-color); font-family: var(--font-sans); font-size: 0.9rem;">
+                                    <div>
+                                        <div style="font-weight: 500;">Feb 15, 2026</div>
+                                        <div style="font-size: 0.8rem; color: var(--text-muted);">$99.00 • Paid</div>
+                                    </div>
+                                    <button class="icon-btn" style="color: var(--primary-color);"><i
+                                            class="ph ph-download-simple"></i></button>
+                                </div>
+                                <div
+                                    style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; font-family: var(--font-sans); font-size: 0.9rem;">
+                                    <div>
+                                        <div style="font-weight: 500;">Jan 15, 2026</div>
+                                        <div style="font-size: 0.8rem; color: var(--text-muted);">$99.00 • Paid</div>
+                                    </div>
+                                    <button class="icon-btn" style="color: var(--primary-color);"><i
+                                            class="ph ph-download-simple"></i></button>
+                                </div>
+                                <a href="#"
+                                    style="display: block; text-align: center; font-family: var(--font-sans); font-size: 0.85rem; font-weight: 600; margin-top: var(--spacing-md);">View
+                                    All Invoices</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 9. TEAM MANAGEMENT -->
+                <section id="view-team" class="view-section">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-xl);">
+                        <div>
+                            <h2>Team Management</h2>
+                            <p style="color: var(--text-muted); font-family: var(--font-sans);">Invite members and
+                                manage permissions.</p>
+                        </div>
+                        <button class="btn btn-primary">
+                            <i class="ph ph-user-plus"></i> Invite User
+                        </button>
+                    </div>
+
+                    <div class="card" style="padding: 0; overflow: hidden;">
+                        <div class="table-responsive">
+                            <table class="data-table" style="width: 100%; white-space: nowrap;">
+                                <thead style="background-color: var(--bg-main);">
+                                    <tr>
+                                        <th>User</th>
+                                        <th>Email</th>
+                                        <th>Role</th>
+                                        <th>Last Active</th>
+                                        <th style="text-align: right;">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody style="font-family: var(--font-sans); font-size: 0.9rem;">
+                                    <tr>
+                                        <td style="font-weight: 500; display: flex; align-items: center; gap: 12px;">
+                                            <div
+                                                style="width: 32px; height: 32px; border-radius: 50%; background-color: var(--accent-color); color: white; display: flex; align-items: center; justify-content: center; font-weight: 600;">
+                                                JS</div>
+                                            John Smith (You)
+                                        </td>
+                                        <td style="color: var(--text-muted);">john@acmecorp.com</td>
+                                        <td><span class="badge"
+                                                style="background: rgba(15, 14, 71, 0.1); color: var(--primary-color);">Owner</span>
+                                        </td>
+                                        <td style="color: var(--text-muted);">Just now</td>
+                                        <td style="text-align: right;">
+                                            <button class="btn btn-secondary"
+                                                style="padding: 4px 12px; font-size: 0.8rem;" disabled>Edit</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight: 500; display: flex; align-items: center; gap: 12px;">
+                                            <div
+                                                style="width: 32px; height: 32px; border-radius: 50%; background-color: #10b981; color: white; display: flex; align-items: center; justify-content: center; font-weight: 600;">
+                                                AL</div>
+                                            Alice Lee
+                                        </td>
+                                        <td style="color: var(--text-muted);">alice@acmecorp.com</td>
+                                        <td><select class="form-control"
+                                                style="padding: 4px 8px; font-size: 0.8rem; height: auto; width: 100px;">
+                                                <option>Admin</option>
+                                                <option selected>Editor</option>
+                                                <option>Viewer</option>
+                                            </select></td>
+                                        <td style="color: var(--text-muted);">2 hours ago</td>
+                                        <td style="text-align: right;">
+                                            <button class="btn btn-secondary"
+                                                style="padding: 4px 12px; font-size: 0.8rem; color: var(--danger-color); border-color: var(--danger-color);">Remove</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight: 500; display: flex; align-items: center; gap: 12px;">
+                                            <div
+                                                style="width: 32px; height: 32px; border-radius: 50%; background-color: #f59e0b; color: white; display: flex; align-items: center; justify-content: center; font-weight: 600;">
+                                                DB</div>
+                                            David Brown
+                                        </td>
+                                        <td style="color: var(--text-muted);">david@acmecorp.com</td>
+                                        <td><select class="form-control"
+                                                style="padding: 4px 8px; font-size: 0.8rem; height: auto; width: 100px;">
+                                                <option>Admin</option>
+                                                <option>Editor</option>
+                                                <option selected>Viewer</option>
+                                            </select></td>
+                                        <td style="color: var(--text-muted);">Yesterday</td>
+                                        <td style="text-align: right;">
+                                            <button class="btn btn-secondary"
+                                                style="padding: 4px 12px; font-size: 0.8rem; color: var(--danger-color); border-color: var(--danger-color);">Remove</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 10. SETTINGS PAGE -->
+                <section id="view-settings" class="view-section">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-xl);">
+                        <div>
+                            <h2>Settings</h2>
+                            <p style="color: var(--text-muted); font-family: var(--font-sans);">Manage your personal
+                                profile and app preferences.</p>
+                        </div>
+                    </div>
+
+                    <div class="card" style="max-width: 800px;">
+                        <h3
+                            style="margin-bottom: var(--spacing-md); border-bottom: 1px solid var(--border-color); padding-bottom: var(--spacing-sm);">
+                            Profile Information</h3>
+
+                        <div
+                            style="display: flex; gap: var(--spacing-xl); margin-bottom: var(--spacing-xl); align-items: center;">
+                            <div
+                                style="width: 100px; height: 100px; border-radius: 50%; background-color: var(--accent-color); color: white; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; font-weight: 700; position: relative;">
+                                JS
+                                <button
+                                    style="position: absolute; bottom: 0; right: 0; width: 32px; height: 32px; border-radius: 50%; background-color: var(--primary-color); color: white; border: 2px solid var(--bg-surface); cursor: pointer; display: flex; align-items: center; justify-content: center;"><i
+                                        class="ph ph-camera"></i></button>
+                            </div>
+                            <div style="flex-grow: 1;">
+                                <div class="form-group"
+                                    style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-md);">
+                                    <div>
+                                        <label class="form-label">First Name</label>
+                                        <input type="text" class="form-control" value="John">
+                                    </div>
+                                    <div>
+                                        <label class="form-label">Last Name</label>
+                                        <input type="text" class="form-control" value="Smith">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" value="john@acmecorp.com" readonly
+                                        style="background-color: var(--bg-hover);">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3
+                            style="margin-bottom: var(--spacing-md); border-bottom: 1px solid var(--border-color); padding-bottom: var(--spacing-sm);">
+                            Preferences</h3>
+
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-md);">
+                            <div>
+                                <div style="font-family: var(--font-sans); font-weight: 600; margin-bottom: 4px;">Dark
+                                    Mode</div>
+                                <div
+                                    style="font-family: var(--font-sans); font-size: 0.85rem; color: var(--text-muted);">
+                                    Switch the interface to a darker color scheme.</div>
+                            </div>
+                            <label class="toggle">
+                                <input type="checkbox" id="dark-mode-toggle">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-xl);">
+                            <div>
+                                <div style="font-family: var(--font-sans); font-weight: 600; margin-bottom: 4px;">Email
+                                    Notifications</div>
+                                <div
+                                    style="font-family: var(--font-sans); font-size: 0.85rem; color: var(--text-muted);">
+                                    Receive alerts for successful runs and errors.</div>
+                            </div>
+                            <label class="toggle">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+
+                        <div
+                            style="border-top: 1px solid var(--border-color); padding-top: var(--spacing-lg); text-align: right;">
+                            <button class="btn btn-primary" style="padding: 10px 24px;">Save Changes</button>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/admin-script.js"></script>
+
+</body>
+
+</html>

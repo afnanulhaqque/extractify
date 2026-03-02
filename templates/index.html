@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extractify Dashboard</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon"><i class="fa-solid fa-cube"></i></div>
+                <h2>Extractify</h2>
+            </div>
+        </div>
+
+        <div class="sidebar-nav">
+            <span class="nav-section">Main Menu</span>
+            <a href="#" class="nav-item active">
+                <i class="fa-solid fa-house"></i>
+                <span>Dashboard Overview</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                <span>New Scraper</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fa-solid fa-folder-open"></i>
+                <span>My Projects</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fa-solid fa-table"></i>
+                <span>Data Tables</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <span>Automation / Schedules</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fa-solid fa-code"></i>
+                <span>API Access</span>
+            </a>
+
+            <span class="nav-section mt-4">Account</span>
+            <a href="#" class="nav-item">
+                <i class="fa-solid fa-credit-card"></i>
+                <span>Billing</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+            </a>
+        </div>
+
+        <div class="sidebar-footer">
+            <div class="theme-toggle" id="theme-toggle">
+                <i class="fa-solid fa-moon"></i>
+                <span>Dark Mode</span>
+                <label class="switch">
+                    <input type="checkbox" id="dark-mode-switch">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Header -->
+        <header class="top-header">
+            <div class="header-left">
+                <button class="mobile-toggle" id="mobile-toggle">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <div class="search-bar">
+                    <i class="fa-solid fa-search"></i>
+                    <input type="text" placeholder="Search projects, tables, settings...">
+                </div>
+            </div>
+
+            <div class="header-right">
+                <div class="workspace-selector">
+                    <span>Personal Workspace</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <button class="icon-btn notification-btn">
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="badge">3</span>
+                </button>
+                <div class="user-profile">
+                    <img src="https://ui-avatars.com/api/?name=Jane+Doe&background=505081&color=fff" alt="User Avatar">
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-container">
+            <div class="dashboard-header">
+                <div>
+                    <h1>Dashboard Overview</h1>
+                    <p class="subtitle">Welcome back! Here's what's happening today.</p>
+                </div>
+                <button class="btn btn-primary">
+                    <i class="fa-solid fa-plus"></i> New Scraper
+                </button>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <div class="stat-content">
+                        <h3>Total Scrapes</h3>
+                        <div class="stat-value">1,492</div>
+                        <p class="stat-change positive"><i class="fa-solid fa-arrow-up"></i> 12% from last week</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon bg-info"><i class="fa-solid fa-database"></i></div>
+                    <div class="stat-content">
+                        <h3>Data Rows Collected</h3>
+                        <div class="stat-value">845,210</div>
+                        <p class="stat-change positive"><i class="fa-solid fa-arrow-up"></i> 24% from last week</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon bg-warning"><i class="fa-solid fa-robot"></i></div>
+                    <div class="stat-content">
+                        <h3>Active Automations</h3>
+                        <div class="stat-value">8</div>
+                        <p class="stat-change neutral">Running smoothly</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon bg-success"><i class="fa-solid fa-download"></i></div>
+                    <div class="stat-content">
+                        <h3>Export Downloads</h3>
+                        <div class="stat-value">342</div>
+                        <p class="stat-change positive"><i class="fa-solid fa-arrow-up"></i> 5% from last week</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <!-- Quick Scraper Tool & Recent Projects -->
+                <div class="grid-col-2">
+                    <!-- Quick Scraper Tool -->
+                    <div class="card premium-card">
+                        <div class="card-header">
+                            <h2>Quick Scraper Tool</h2>
+                            <p class="card-subtitle">Extract data instantly from any URL</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="quick-scraper-form">
+                                <div class="input-group">
+                                    <div class="input-icon"><i class="fa-solid fa-link"></i></div>
+                                    <input type="url" placeholder="https://example.com/products" class="form-control">
+                                </div>
+                                <div class="options-row">
+                                    <label class="toggle-container">
+                                        <span class="toggle-label">Extract Tables</span>
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-switch"></span>
+                                    </label>
+                                    <label class="toggle-container">
+                                        <span class="toggle-label">Follow Pagination</span>
+                                        <input type="checkbox">
+                                        <span class="toggle-switch"></span>
+                                    </label>
+                                </div>
+                                <button class="btn btn-primary btn-block btn-lg">
+                                    <i class="fa-solid fa-wand-magic-sparkles"></i> Start Scraping
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Automation Section -->
+                    <div class="card max-height">
+                        <div class="card-header flex-between">
+                            <h2>Active Automations</h2>
+                            <a href="#" class="view-all">View All</a>
+                        </div>
+                        <div class="card-body p-0">
+                            <ul class="automation-list">
+                                <li class="automation-item">
+                                    <div class="auto-info">
+                                        <h4>Amazon Competitor Prices</h4>
+                                        <p>Every day at 00:00 UTC</p>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider round"></span>
+                                    </label>
+                                </li>
+                                <li class="automation-item">
+                                    <div class="auto-info">
+                                        <h4>Real Estate Listings</h4>
+                                        <p>Every 6 hours</p>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider round"></span>
+                                    </label>
+                                </li>
+                                <li class="automation-item">
+                                    <div class="auto-info">
+                                        <h4>Stock Market Tickers</h4>
+                                        <p>Every 1 hour</p>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox">
+                                        <span class="slider round"></span>
+                                    </label>
+                                </li>
+                            </ul>
+                            <div class="card-footer">
+                                <button class="btn btn-outline btn-block"><i class="fa-solid fa-clock"></i> New
+                                    Schedule</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Projects Table -->
+                <div class="grid-col-full">
+                    <div class="card">
+                        <div class="card-header flex-between">
+                            <h2>Recent Projects</h2>
+                            <div class="table-actions">
+                                <button class="btn-icon"><i class="fa-solid fa-filter"></i></button>
+                                <button class="btn-icon"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                            </div>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Project Name <i class="fa-solid fa-sort"></i></th>
+                                            <th>Target Website</th>
+                                            <th>Last Run <i class="fa-solid fa-sort-down"></i></th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="project-name"><i
+                                                        class="fa-brands fa-amazon text-warning"></i> Product Scraper
+                                                </div>
+                                            </td>
+                                            <td>amazon.com/products</td>
+                                            <td>2 mins ago</td>
+                                            <td><span class="badge status-success">Completed</span></td>
+                                            <td>
+                                                <div class="action-buttons">
+                                                    <button class="btn-action" title="Run"><i
+                                                            class="fa-solid fa-play"></i></button>
+                                                    <button class="btn-action" title="Edit"><i
+                                                            class="fa-solid fa-pen"></i></button>
+                                                    <button class="btn-action" title="Download"><i
+                                                            class="fa-solid fa-download"></i></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="project-name"><i
+                                                        class="fa-brands fa-linkedin text-info"></i> B2B Leads</div>
+                                            </td>
+                                            <td>linkedin.com/search</td>
+                                            <td>1 hour ago</td>
+                                            <td><span class="badge status-running"><i
+                                                        class="fa-solid fa-spinner fa-spin"></i> Running</span></td>
+                                            <td>
+                                                <div class="action-buttons">
+                                                    <button class="btn-action" disabled title="Run"><i
+                                                            class="fa-solid fa-play"></i></button>
+                                                    <button class="btn-action" title="Edit"><i
+                                                            class="fa-solid fa-pen"></i></button>
+                                                    <button class="btn-action" disabled title="Download"><i
+                                                            class="fa-solid fa-download"></i></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="project-name"><i class="fa-solid fa-globe text-primary"></i>
+                                                    News Articles Data</div>
+                                            </td>
+                                            <td>techcrunch.com</td>
+                                            <td>Yesterday</td>
+                                            <td><span class="badge status-error">Failed</span></td>
+                                            <td>
+                                                <div class="action-buttons">
+                                                    <button class="btn-action" title="Run"><i
+                                                            class="fa-solid fa-rotate-right"></i></button>
+                                                    <button class="btn-action" title="Edit"><i
+                                                            class="fa-solid fa-pen"></i></button>
+                                                    <button class="btn-action" title="Download"><i
+                                                            class="fa-solid fa-download"></i></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="project-name"><i class="fa-brands fa-twitter text-info"></i>
+                                                    Sentiment Analysis</div>
+                                            </td>
+                                            <td>twitter.com/search</td>
+                                            <td>Oct 24, 2023</td>
+                                            <td><span class="badge status-success">Completed</span></td>
+                                            <td>
+                                                <div class="action-buttons">
+                                                    <button class="btn-action" title="Run"><i
+                                                            class="fa-solid fa-play"></i></button>
+                                                    <button class="btn-action" title="Edit"><i
+                                                            class="fa-solid fa-pen"></i></button>
+                                                    <button class="btn-action" title="Download"><i
+                                                            class="fa-solid fa-download"></i></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Section: Data Preview & Activity -->
+                <div class="grid-col-2-1">
+                    <!-- Data Preview Panel -->
+                    <div class="card">
+                        <div class="card-header flex-between">
+                            <h2>Data Preview: Product Scraper</h2>
+                            <div class="export-buttons">
+                                <button class="btn btn-sm btn-outline"><i class="fa-solid fa-file-csv"></i> CSV</button>
+                                <button class="btn btn-sm btn-outline"><i class="fa-solid fa-file-excel"></i>
+                                    Excel</button>
+                                <button class="btn btn-sm btn-outline"><i class="fa-solid fa-code"></i> JSON</button>
+                            </div>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="spreadsheet-container">
+                                <table class="spreadsheet-table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Product Name</th>
+                                            <th>Price</th>
+                                            <th>Rating</th>
+                                            <th>Reviews</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="row-num">1</td>
+                                            <td class="cell-data">Wireless Noise Cancelling Headphones</td>
+                                            <td class="cell-data">$299.99</td>
+                                            <td class="cell-data">4.8</td>
+                                            <td class="cell-data">12,453</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="row-num">2</td>
+                                            <td class="cell-data">Smart Fitness Watch Series 6</td>
+                                            <td class="cell-data">$199.00</td>
+                                            <td class="cell-data">4.5</td>
+                                            <td class="cell-data">8,921</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="row-num">3</td>
+                                            <td class="cell-data">Ultra HD 4K Monitor 27-inch</td>
+                                            <td class="cell-data">$349.50</td>
+                                            <td class="cell-data">4.7</td>
+                                            <td class="cell-data">3,210</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="row-num">4</td>
+                                            <td class="cell-data">Mechanical Gaming Keyboard RGB</td>
+                                            <td class="cell-data">$129.99</td>
+                                            <td class="cell-data">4.9</td>
+                                            <td class="cell-data">5,632</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="row-num">5</td>
+                                            <td class="cell-data">Ergonomic Office Chair Mesh</td>
+                                            <td class="cell-data">$185.00</td>
+                                            <td class="cell-data">4.4</td>
+                                            <td class="cell-data">2,145</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="card-footer text-center">
+                            <p class="text-muted text-sm">Showing 5 of 1,245 rows</p>
+                        </div>
+                    </div>
+
+                    <!-- Activity Feed -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Activity Feed</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="activity-feed">
+                                <div class="activity-item">
+                                    <div class="activity-icon bg-success-light"><i
+                                            class="fa-solid fa-check text-success"></i></div>
+                                    <div class="activity-content">
+                                        <p><strong>Amazon Scraper</strong> completed successfully.</p>
+                                        <span class="activity-time">2 mins ago</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon bg-primary-light"><i
+                                            class="fa-solid fa-play text-primary"></i></div>
+                                    <div class="activity-content">
+                                        <p><strong>B2B Leads</strong> started running.</p>
+                                        <span class="activity-time">1 hour ago</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon bg-info-light"><i
+                                            class="fa-solid fa-download text-info"></i></div>
+                                    <div class="activity-content">
+                                        <p>Exported <strong>News Data</strong> to CSV.</p>
+                                        <span class="activity-time">3 hours ago</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon bg-warning-light"><i
+                                            class="fa-solid fa-clock text-warning"></i></div>
+                                    <div class="activity-content">
+                                        <p>Updated schedule for <strong>Real Estate Listings</strong>.</p>
+                                        <span class="activity-time">Yesterday</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item pb-0 border-0">
+                                    <div class="activity-icon bg-danger-light"><i
+                                            class="fa-solid fa-triangle-exclamation text-danger"></i></div>
+                                    <div class="activity-content">
+                                        <p><strong>TechCrunch</strong> scraping failed (Timeout).</p>
+                                        <span class="activity-time">Yesterday</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Chart.js for analytics -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>

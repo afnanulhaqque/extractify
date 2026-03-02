@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Intelligence - Extractify</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --hero-gradient: var(--gradient-amber);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <header class="solution-hero animate-fade-in">
+        <div class="container">
+            <div class="no-code-badge"
+                style="background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); margin-bottom: 2rem;">
+                <i data-lucide="bar-chart-big" style="width: 16px; height: 16px;"></i> Market Intelligence
+            </div>
+            <h1>Turn Public Data into Market Insights</h1>
+            <p>Analyze trends, monitor public sentiment, and track industry growth at scale. Aggregate data from news,
+                social media, and forums automatically.</p>
+            <div style="display: flex; gap: var(--spacing-md); justify-content: center; margin-top: 2rem;">
+                <a href="../start-free.html" class="btn btn-white btn-animated" style="padding: 1rem 2.5rem;">Start Free
+                    Trial</a>
+                <a href="#features" class="btn btn-outline-white" style="padding: 1rem 2.5rem;">The Alpha Feed</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="features" class="section animate-fade-in">
+        <div class="container">
+            <h2 class="text-center" style="margin-bottom: 4rem;">Comprehensive Market Visibility</h2>
+            <div class="feature-grid">
+                <div class="card glass-card-hover feature-item">
+                    <div class="feature-icon"><i data-lucide="trending-up"></i></div>
+                    <h4>Trend Detection</h4>
+                    <p style="color: var(--color-text-muted);">Identify emerging keywords and topics across social media
+                        and niche forums before they go mainstream.</p>
+                </div>
+                <div class="card glass-card-hover feature-item">
+                    <div class="feature-icon"><i data-lucide="message-square"></i></div>
+                    <h4>Sentiment Analysis</h4>
+                    <p style="color: var(--color-text-muted);">Scrape product reviews and social comments to understand
+                        public perception of any industry or brand.</p>
+                </div>
+                <div class="card glass-card-hover feature-item">
+                    <div class="feature-icon"><i data-lucide="database"></i></div>
+                    <h4>Regulatory Tracking</h4>
+                    <p style="color: var(--color-text-muted);">Monitor government sites and legal filings to stay ahead
+                        of policy changes that impact your market.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="preview-section" style="position: relative; overflow: hidden;">
+        <!-- Glowing Background Blob -->
+        <div
+            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 400px; background: var(--hero-gradient); filter: blur(120px); opacity: 0.35; border-radius: 50%; pointer-events: none; z-index: 0;">
+        </div>
+
+        <div class="container" style="position: relative; z-index: 1;">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <span
+                    style="color: #f59e0b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.85rem;">Market
+                    Pulse</span>
+                <h2 style="margin-top: 0.5rem;">Industry Growth Metrics</h2>
+            </div>
+
+            <div class="glass-table-container preview-container">
+                <table class="data-table" style="width: 100%; border-collapse: collapse; text-align: left;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid var(--color-border);">
+                            <th style="padding: 15px; font-weight: 700;">Sector</th>
+                            <th style="padding: 15px; font-weight: 700;">Growth Index</th>
+                            <th style="padding: 15px; font-weight: 700;">Public Interest</th>
+                            <th style="padding: 15px; font-weight: 700;">Opportunity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
+                            <td style="padding: 15px;">Fintech</td>
+                            <td style="padding: 15px;">+14.2%</td>
+                            <td style="padding: 15px; color: var(--color-emerald);">Bullish</td>
+                            <td style="padding: 15px; color: #f59e0b; font-weight: 600;">HIGH</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
+                            <td style="padding: 15px;">Sustainability</td>
+                            <td style="padding: 15px;">+28.5%</td>
+                            <td style="padding: 15px; color: var(--color-emerald);">Very Bullish</td>
+                            <td style="padding: 15px; color: #f59e0b; font-weight: 600;">CRITICAL</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 15px;">E-learning</td>
+                            <td style="padding: 15px;">+3.8%</td>
+                            <td style="padding: 15px; color: var(--color-text-muted);">Stable</td>
+                            <td style="padding: 15px; color: #f59e0b; font-weight: 600;">MODERATE</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="cta-banner"
+            style="background: var(--hero-gradient); position: relative; overflow: hidden; box-shadow: var(--shadow-2xl); border: 1px solid rgba(255,255,255,0.1);">
+            <div
+                style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at center, rgba(255,255,255,0.15) 0%, transparent 50%); pointer-events: none;">
+            </div>
+            <div style="position: relative; z-index: 1;">
+                <h2>Data drives decisions.</h2>
+                <p style="margin-top: 1rem; opacity: 0.8; font-size: 1.1rem;">Join 3,500+ analysts using Extractify to
+                    power
+                    their reports.</p>
+                <a href="../start-free.html" class="btn btn-white btn-animated"
+                    style="margin-top: 2rem; padding: 1rem 3.5rem;">Start
+                    Market Analysis</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="../js/components.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.lucide) { window.lucide.createIcons(); }
+        });
+    </script>
+</body>
+
+</html>

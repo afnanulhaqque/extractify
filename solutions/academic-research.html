@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Research - Extractify</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --hero-gradient: var(--gradient-indigo);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <header class="solution-hero animate-fade-in">
+        <div class="container">
+            <div class="no-code-badge"
+                style="background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); margin-bottom: 2rem;">
+                <i data-lucide="book-open" style="width: 16px; height: 16px;"></i> Academic Research
+            </div>
+            <h1>Scale Your Literature Review with AI Scrapers</h1>
+            <p>Automatically extract papers, citations, and metadata from Google Scholar, PubMed, and ArXiv. Organize
+                thousands of sources into structured bibliographies in seconds.</p>
+            <div style="display: flex; gap: var(--spacing-md); justify-content: center; margin-top: 2rem;">
+                <a href="../start-free.html" class="btn btn-white btn-animated" style="padding: 1rem 2.5rem;">Start
+                    Free Trial</a>
+                <a href="#features" class="btn btn-outline-white" style="padding: 1rem 2.5rem;">For Researchers</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="features" class="section animate-fade-in">
+        <div class="container">
+            <h2 class="text-center" style="margin-bottom: 4rem;">Empowering Data-Driven Academia</h2>
+            <div class="feature-grid">
+                <div class="card glass-card-hover feature-item">
+                    <div class="feature-icon"><i data-lucide="search"></i></div>
+                    <h4>Metadata Extraction</h4>
+                    <p style="color: var(--color-text-muted);">Pull DOIs, publishing dates, and author lists
+                        automatically from thousands of papers simultaneously.</p>
+                </div>
+                <div class="card glass-card-hover feature-item">
+                    <div class="feature-icon"><i data-lucide="share-2"></i></div>
+                    <h4>Citation Networking</h4>
+                    <p style="color: var(--color-text-muted);">Track how papers are citing each other and build
+                        comprehensive citation graphs for your thesis or research.</p>
+                </div>
+                <div class="card glass-card-hover feature-item">
+                    <div class="feature-icon"><i data-lucide="file-text"></i></div>
+                    <h4>PDF Batch Download</h4>
+                    <p style="color: var(--color-text-muted);">Automate the naming and organization of full-text PDFs
+                        based on your custom naming conventions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="preview-section" style="position: relative; overflow: hidden;">
+        <!-- Glowing Background Blob -->
+        <div
+            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 400px; background: var(--hero-gradient); filter: blur(120px); opacity: 0.35; border-radius: 50%; pointer-events: none; z-index: 0;">
+        </div>
+
+        <div class="container" style="position: relative; z-index: 1;">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <span
+                    style="color: var(--color-primary); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.85rem;">Library
+                    View</span>
+                <h2 style="margin-top: 0.5rem;">Organized Research Data</h2>
+            </div>
+
+            <div class="glass-table-container preview-container">
+                <table class="data-table" style="width: 100%; border-collapse: collapse; text-align: left;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid var(--color-border);">
+                            <th style="padding: 15px; font-weight: 700;">Title</th>
+                            <th style="padding: 15px; font-weight: 700;">Authors</th>
+                            <th style="padding: 15px; font-weight: 700;">Source</th>
+                            <th style="padding: 15px; font-weight: 700;">Citations</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
+                            <td style="padding: 15px;">Neural Networks in 2026</td>
+                            <td style="padding: 15px;">Dr. Alan T.</td>
+                            <td style="padding: 15px;">Nature AI</td>
+                            <td style="padding: 15px; color: var(--color-primary); font-weight: 600;">1,240</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
+                            <td style="padding: 15px;">Climate Impact Analysis</td>
+                            <td style="padding: 15px;">Green, L. et al</td>
+                            <td style="padding: 15px;">Env. Science</td>
+                            <td style="padding: 15px; color: var(--color-primary); font-weight: 600;">350</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 15px;">Quantum Computing Rev.</td>
+                            <td style="padding: 15px;">S. Hawking (Legacy)</td>
+                            <td style="padding: 15px;">arXiv</td>
+                            <td style="padding: 15px; color: var(--color-primary); font-weight: 600;">8,400</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="cta-banner"
+            style="background: var(--hero-gradient); position: relative; overflow: hidden; box-shadow: var(--shadow-2xl); border: 1px solid rgba(255,255,255,0.1);">
+            <div
+                style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at center, rgba(255,255,255,0.15) 0%, transparent 50%); pointer-events: none;">
+            </div>
+            <div style="position: relative; z-index: 1;">
+                <h2>Data drives decisions.</h2>
+                <p style="margin-top: 1rem; opacity: 0.8; font-size: 1.1rem;">Join 3,500+ analysts using Extractify to
+                    power
+                    their reports.</p>
+                <a href="../start-free.html" class="btn btn-white btn-animated"
+                    style="margin-top: 2rem; padding: 1rem 3.5rem;">Start
+                    Researching</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="../js/components.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.lucide) { window.lucide.createIcons(); }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+{
+  "version": 2,
+  "name": "extractify",
+  "builds": [
+    {
+      "src": "backend/api/index.ts",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "*.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "admin_app/index.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "css/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "js/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "assets/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "admin_app/css/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "admin_app/js/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/backend/api/index.ts"
+    },
+    {
+      "source": "/admin",
+      "destination": "/admin_app/index.html"
+    },
+    {
+      "source": "/admin/(.*)",
+      "destination": "/admin_app/index.html"
+    }
+  ]
+}

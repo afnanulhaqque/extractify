@@ -1,0 +1,226 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Style Guide - Extractify</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
+        rel="stylesheet">
+    <!-- Base CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
+    <style>
+        .sg-header {
+            background-color: var(--color-primary);
+            color: white;
+            padding: var(--spacing-4xl) 0 var(--spacing-2xl);
+            text-align: center;
+        }
+
+        .sg-header h1 {
+            color: white;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .sg-section {
+            margin-top: var(--spacing-4xl);
+        }
+
+        .sg-section-title {
+            border-bottom: 2px solid var(--color-border);
+            padding-bottom: var(--spacing-sm);
+            margin-bottom: var(--spacing-xl);
+            color: var(--color-primary);
+        }
+
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .color-swatch {
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--color-border);
+        }
+
+        .color-box {
+            height: 100px;
+        }
+
+        .color-info {
+            padding: var(--spacing-sm);
+            background: white;
+        }
+
+        .color-info strong {
+            display: block;
+            font-family: var(--font-body);
+            color: var(--color-text-main);
+            font-size: 0.875rem;
+        }
+
+        .color-info span {
+            color: var(--color-text-muted);
+            font-size: 0.75rem;
+            font-family: monospace;
+        }
+
+        .typo-row {
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-md);
+            border-bottom: 1px dashed var(--color-border);
+        }
+
+        .typo-label {
+            color: var(--color-text-muted);
+            font-size: 0.875rem;
+            margin-bottom: var(--spacing-xs);
+        }
+    </style>
+
+    <script src="js/components.js"></script>
+
+
+<body>
+
+    <header class="sg-header">
+        <div class="container">
+            <h1>Extractify Design System</h1>
+            <p style="color: rgba(255,255,255,0.8);">Style Guide & Brand Assets</p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- Colors Section -->
+        <section class="sg-section">
+            <h2 class="sg-section-title">Colors</h2>
+
+            <h4 style="margin-top: var(--spacing-lg);">Brand Colors</h4>
+            <div class="color-palette">
+                <div class="color-swatch">
+                    <div class="color-box" style="background-color: var(--color-primary);"></div>
+                    <div class="color-info">
+                        <strong>Deep Navy</strong>
+                        <span>#0F0E47</span>
+                    </div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-box" style="background-color: var(--color-secondary);"></div>
+                    <div class="color-info">
+                        <strong>Indigo</strong>
+                        <span>#272757</span>
+                    </div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-box" style="background-color: var(--color-accent);"></div>
+                    <div class="color-info">
+                        <strong>Muted Purple</strong>
+                        <span>#505081</span>
+                    </div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-box" style="background-color: var(--color-bg-brand);"></div>
+                    <div class="color-info">
+                        <strong>Lavender Gray</strong>
+                        <span>#8686AC</span>
+                    </div>
+                </div>
+            </div>
+
+            <h4 style="margin-top: var(--spacing-xl);">Neutral & Surface</h4>
+            <div class="color-palette">
+                <div class="color-swatch">
+                    <div class="color-box" style="background-color: var(--color-text-main);"></div>
+                    <div class="color-info">
+                        <strong>Text Main</strong>
+                        <span>#1A1A2E</span>
+                    </div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-box" style="background-color: var(--color-text-muted);"></div>
+                    <div class="color-info">
+                        <strong>Text Muted</strong>
+                        <span>#5A5A72</span>
+                    </div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-box" style="background-color: var(--color-border);"></div>
+                    <div class="color-info">
+                        <strong>Border</strong>
+                        <span>#E2E4EB</span>
+                    </div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-box"
+                        style="background-color: var(--color-bg-main); border-bottom: 1px solid var(--color-border);">
+                    </div>
+                    <div class="color-info">
+                        <strong>Background</strong>
+                        <span>#F8F9FB</span>
+                    </div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-box"
+                        style="background-color: var(--color-surface); border-bottom: 1px solid var(--color-border);">
+                    </div>
+                    <div class="color-info">
+                        <strong>Surface (White)</strong>
+                        <span>#FFFFFF</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Typography Section -->
+        <section class="sg-section" style="margin-bottom: var(--spacing-4xl);">
+            <h2 class="sg-section-title">Typography</h2>
+
+            <div class="grid grid-cols-2">
+                <div>
+                    <h4 style="margin-bottom: var(--spacing-md);">Playfair Display (Headings)</h4>
+                    <div class="typo-row">
+                        <div class="typo-label">Heading 1 - Bold - 4rem (Max)</div>
+                        <h1>Extract Website Data</h1>
+                    </div>
+                    <div class="typo-row">
+                        <div class="typo-label">Heading 2 - Bold - 3rem (Max)</div>
+                        <h2>Smart Web Scraping</h2>
+                    </div>
+                    <div class="typo-row">
+                        <div class="typo-label">Heading 3 - Bold - 2.25rem (Max)</div>
+                        <h3>Pricing Plans</h3>
+                    </div>
+                    <div class="typo-row">
+                        <div class="typo-label">Heading 4 - Bold - 1.5rem (Max)</div>
+                        <h4>Pro Features</h4>
+                    </div>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: var(--spacing-md);">Lora (Body/Paragraphs)</h4>
+                    <div class="typo-row">
+                        <div class="typo-label">Body Text - Regular - 1.125rem</div>
+                        <p style="margin-bottom: 0;">Extractify allows users to scrape data from websites and download
+                            it in Excel or CSV format easily. No coding required. Just enter a URL, select your data
+                            points, and export to your preferred format in seconds.</p>
+                    </div>
+                    <div class="typo-row" style="margin-top: var(--spacing-lg);">
+                        <div class="typo-label">Button Text - SemiBold - 1.125rem</div>
+                        <a href="#" class="btn btn-primary" style="display: inline-block;">Start Scraping Free</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center - Extractify</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Shared Styles from index/privacy */
+        .navbar {
+            background-color: var(--color-bg-main);
+            padding: var(--spacing-md) 0;
+            border-bottom: 1px solid var(--color-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--spacing-lg);
+            align-items: center;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            color: var(--color-text-main);
+            text-decoration: none;
+        }
+
+        .nav-link:hover {
+            color: var(--color-primary);
+        }
+
+        .footer {
+            background-color: var(--color-text-main);
+            color: white;
+            padding: var(--spacing-4xl) 0 var(--spacing-2xl);
+        }
+
+        .footer p,
+        .footer a {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.875rem;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: white;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: var(--spacing-2xl);
+            margin-bottom: var(--spacing-3xl);
+        }
+
+        .footer-logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            margin-bottom: var(--spacing-md);
+            display: inline-flex;
+            align-items: center;
+        }
+
+        /* Help Center Specific */
+        .help-hero {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            padding: var(--spacing-4xl) 0;
+            color: white;
+            text-align: center;
+        }
+
+        .help-hero h1 {
+            color: white;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .search-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1.25rem 1.5rem 1.25rem 3.5rem;
+            border-radius: var(--border-radius-pill);
+            border: none;
+            font-size: 1.125rem;
+            box-shadow: var(--shadow-xl);
+            font-family: var(--font-body);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--color-text-muted);
+            font-size: 1.25rem;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-4xl);
+        }
+
+        .category-card {
+            background: white;
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-xl);
+            transition: all var(--transition-normal);
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--color-primary);
+        }
+
+        .category-icon {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .category-card h3 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: var(--color-primary);
+        }
+
+        .category-card p {
+            margin: 0;
+            font-size: 1rem;
+            color: var(--color-text-muted);
+        }
+
+        .faq-section {
+            padding: var(--spacing-4xl) 0;
+            background-color: white;
+        }
+
+        .faq-title {
+            text-align: center;
+            margin-bottom: var(--spacing-3xl);
+        }
+
+        .faq-item {
+            max-width: 800px;
+            margin: 0 auto var(--spacing-lg);
+            border-bottom: 1px solid var(--color-border);
+            padding-bottom: var(--spacing-lg);
+        }
+
+        .faq-question {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-sm);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            color: var(--color-text-muted);
+            display: none;
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .support-cta {
+            background-color: var(--color-bg-main);
+            padding: var(--spacing-4xl) 0;
+            text-align: center;
+        }
+
+        .support-card {
+            background: white;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: var(--spacing-2xl);
+            border-radius: var(--border-radius-xl);
+            border: 1px solid var(--color-border);
+            box-shadow: var(--shadow-md);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-brand">
+                <img src="assets/logo-icon.png" alt="Extractify Logo"
+                    style="width: 32px; height: 32px; border-radius: 8px;">
+                Extractify
+            </a>
+            <div class="nav-links">
+                <a href="index.html#how" class="nav-link">How it Works</a>
+                <a href="index.html#benefits" class="nav-link">Benefits</a>
+                <a href="index.html#use-cases" class="nav-link">Use Cases</a>
+                <a href="index.html#pricing" class="nav-link">Pricing</a>
+                <a href="index.html#faq" class="nav-link">FAQ</a>
+                <a href="login.html" class="btn btn-secondary" style="padding: 0.5rem 1rem;">Login</a>
+                <a href="start-free.html" class="btn btn-primary" style="padding: 0.5rem 1rem;">Start Free</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="help-hero">
+        <div class="container">
+            <h1>Help Center</h1>
+            <p style="color: rgba(255,255,255,0.9); margin-bottom: var(--spacing-xl);">Find answers, tutorials, and
+                support for all your data extraction needs.</p>
+            <div class="search-wrapper">
+                <span class="search-icon"><i data-lucide="search" style="width: 20px; height: 20px;"></i></span>
+                <input type="text" class="search-input"
+                    placeholder="Search for articles, features, or troubleshooting...">
+            </div>
+        </div>
+    </header>
+
+    <!-- Categories -->
+    <section class="section">
+        <div class="container">
+            <div class="category-grid">
+                <a href="#" class="category-card">
+                    <div class="category-icon text-primary"><i data-lucide="rocket"
+                            style="width: 40px; height: 40px;"></i></div>
+                    <h3>Getting Started</h3>
+                    <p>Learn the basics of Extractify and set up your first scraper in minutes.</p>
+                </a>
+                <a href="#" class="category-card">
+                    <div class="category-icon text-primary"><i data-lucide="user"
+                            style="width: 40px; height: 40px;"></i></div>
+                    <h3>Account & Billing</h3>
+                    <p>Manage your subscription, invoices, and profile settings.</p>
+                </a>
+                <a href="#" class="category-card">
+                    <div class="category-icon text-primary"><i data-lucide="settings"
+                            style="width: 40px; height: 40px;"></i></div>
+                    <h3>Scraping Tools</h3>
+                    <p>Master advanced selectors, pagination, and dynamic content handling.</p>
+                </a>
+                <a href="#" class="category-card">
+                    <div class="category-icon text-primary"><i data-lucide="bot" style="width: 40px; height: 40px;"></i>
+                    </div>
+                    <h3>Automation</h3>
+                    <p>Set up schedules, webhooks, and cloud-based recurring tasks.</p>
+                </a>
+                <a href="#" class="category-card">
+                    <div class="category-icon text-primary"><i data-lucide="plug"
+                            style="width: 40px; height: 40px;"></i></div>
+                    <h3>API & Integrations</h3>
+                    <p>Connect Extractify to your existing workflows via API and third-party tools.</p>
+                </a>
+                <a href="#" class="category-card">
+                    <div class="category-icon text-primary"><i data-lucide="help-circle"
+                            style="width: 40px; height: 40px;"></i></div>
+                    <h3>Troubleshooting</h3>
+                    <p>Quick fixes for common errors and anti-bot challenges.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Articles / FAQ -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="faq-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Quick answers to common questions about our platform.</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">How do I start my first extraction? <span>▼</span></div>
+                <div class="faq-answer">Simply enter the URL of the website you want to scrape into the dashboard,
+                    select the data points you want to capture using our visual selector, and hit "Run". You'll have
+                    your data in seconds.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Does Extractify handle JavaScript-heavy websites? <span>▼</span></div>
+                <div class="faq-answer">Yes! Our advanced cloud-based browser engine can render JavaScript, handle
+                    single-page applications (SPAs), and wait for dynamic content to load before extraction.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Can I schedule scrapers to run daily? <span>▼</span></div>
+                <div class="faq-answer">Absolutely. With our Automation features, you can schedule any project to run at
+                    specific intervals (hourly, daily, weekly) and receive the data automatically.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What file formats are supported for export? <span>▼</span></div>
+                <div class="faq-answer">We support XLSX (Excel), CSV, and JSON formats for all data extractions. You can
+                    also sync data directly to Google Sheets or via Webhooks.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support CTA -->
+    <section class="support-cta">
+        <div class="container">
+            <div class="support-card">
+                <h3>Still need help?</h3>
+                <p>Our support team is available 24/7 to assist you with complex scraping needs.</p>
+                <div
+                    style="margin-top: var(--spacing-lg); display: flex; gap: var(--spacing-md); justify-content: center;">
+                    <a href="mailto:support@extractify.com" class="btn btn-primary">Contact Support</a>
+                    <a href="#" class="btn btn-secondary">Chat with us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="index.html" class="footer-logo">
+                        <img src="assets/logo-icon.png" alt="Extractify Logo"
+                            style="width: 24px; height: 24px; border-radius: 6px; margin-right: 8px; filter: brightness(0) invert(1);">
+                        Extractify
+                    </a>
+                    <p style="font-size: 1rem; margin-bottom: var(--spacing-md);">Turn Any Website Into Clean Data —
+                        Instantly.</p>
+                </div>
+                <div>
+                    <h4 style="color: white; font-size: 1rem; margin-bottom: var(--spacing-md);">Product</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 8px;"><a href="index.html#benefits">Benefits</a></li>
+                        <li style="margin-bottom: 8px;"><a href="index.html#pricing">Pricing</a></li>
+                        <li style="margin-bottom: 8px;"><a href="index.html#use-cases">Use Cases</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: white; font-size: 1rem; margin-bottom: var(--spacing-md);">Resources</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 8px;"><a href="index.html#faq">FAQ</a></li>
+                        <li style="margin-bottom: 8px;"><a href="help-center.html">Help Center</a></li>
+                        <li style="margin-bottom: 8px;"><a href="web-scraping-guide.html">Web Scraping Guide</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: white; font-size: 1rem; margin-bottom: var(--spacing-md);">Legal</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 8px;"><a href="privacy.html">Privacy Policy</a></li>
+                        <li style="margin-bottom: 8px;"><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: var(--spacing-lg); text-align: center; font-size: 0.875rem;">
+                <p>&copy; 2026 Extractify Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+
+        // Initialize Lucide Icons
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

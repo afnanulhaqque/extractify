@@ -1,0 +1,544 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extractify - Brand Guidelines & Assets</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0F0E47;
+            --secondary: #272757;
+            --accent: #505081;
+            --muted: #8686AC;
+            --bg: #F8F9FB;
+            --card: #FFFFFF;
+            --text: #1a1a2e;
+            --font-ui: 'Inter', sans-serif;
+            --font-brand: 'Playfair Display', serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-ui);
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .header h1 {
+            font-family: var(--font-brand);
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            letter-spacing: -0.02em;
+        }
+
+        .header p {
+            color: var(--accent);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section {
+            background: var(--card);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(15, 14, 71, 0.04);
+            border: 1px solid rgba(15, 14, 71, 0.05);
+            animation: slideUp 0.6s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .section:nth-child(2) { animation-delay: 0.1s; }
+        .section:nth-child(3) { animation-delay: 0.2s; }
+        .section:nth-child(4) { animation-delay: 0.3s; }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: var(--secondary);
+            border-bottom: 2px solid var(--bg);
+            padding-bottom: 16px;
+        }
+
+        .logo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .logo-card {
+            border-radius: 16px;
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            min-height: 240px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .logo-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(15, 14, 71, 0.08);
+        }
+
+        .logo-card span {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .bg-light { background: #ffffff; border: 1px solid #eef0f5; }
+        .bg-light span { color: var(--muted); }
+
+        .bg-dark { background: var(--primary); }
+        .bg-dark span { color: rgba(255,255,255,0.4); }
+        
+        .bg-monochrome { background: #ffffff; border: 1px solid #eef0f5; }
+        .bg-monochrome span { color: #888; }
+        
+        .bg-gray { background: #f4f5f9; border: 1px solid #eef0f5; }
+        .bg-gray span { color: var(--muted); }
+
+        .svg-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+        }
+
+        .svg-container svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        .download-btn {
+            padding: 8px 16px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            background: rgba(15, 14, 71, 0.05);
+            color: var(--primary);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .bg-dark .download-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+        }
+
+        .download-btn:hover {
+            background: var(--primary);
+            color: #ffffff;
+        }
+        .bg-dark .download-btn:hover {
+            background: #ffffff;
+            color: var(--primary);
+        }
+
+        /* Color Palette Grid */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .color-swatch {
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+
+        .color-swatch:hover {
+            transform: translateY(-4px);
+        }
+
+        .color-block {
+            height: 140px;
+            display: flex;
+            align-items: flex-end;
+            padding: 16px;
+        }
+
+        .color-info {
+            padding: 20px;
+            background: #ffffff;
+        }
+
+        .color-name { font-weight: 600; font-size: 1rem; margin-bottom: 4px; color: var(--text); }
+        .color-hex { font-family: monospace; font-size: 0.9rem; color: var(--muted); }
+
+        /* Typography */
+        .typo-sample {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        .typo-brand {
+            font-family: var(--font-brand);
+            font-size: 4rem;
+            color: var(--primary);
+            line-height: 1.1;
+        }
+        .typo-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--bg);
+            padding-top: 15px;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+    </style>
+
+    <script src="js/components.js"></script>
+
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>Extractify</h1>
+        <p>Brand Guidelines & Visual Assets. Intelligent data extraction transformed into precise formats.</p>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Brand Logos</h2>
+        <div class="logo-grid">
+            
+            <!-- Primary Logo -->
+            <div class="logo-card bg-light">
+                <span>Primary</span>
+                <div class="svg-container" id="svg-primary">
+                    <svg viewBox="0 0 240 40" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="flowGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#272757" />
+                                <stop offset="100%" stop-color="#505081" />
+                            </linearGradient>
+                            <linearGradient id="flowGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#505081" />
+                                <stop offset="100%" stop-color="#8686AC" />
+                            </linearGradient>
+                        </defs>
+                        <g transform="translate(4, 2)">
+                            <!-- Abstract 'E' Icon -->
+                            <!-- Spine connecting lines -->
+                            <rect x="0" y="0" width="8" height="36" rx="4" fill="#0F0E47" />
+                            
+                            <!-- Top Flow -->
+                            <rect x="14" y="0" width="22" height="8" rx="4" fill="url(#flowGrad1)" />
+                            <circle cx="28" cy="4" r="2.5" fill="#ffffff" />
+                            
+                            <!-- Mid Flow -->
+                            <rect x="14" y="14" width="16" height="8" rx="4" fill="#505081" />
+                            
+                            <!-- Bottom Flow -->
+                            <rect x="14" y="28" width="22" height="8" rx="4" fill="url(#flowGrad2)" />
+                            <circle cx="28" cy="32" r="2.5" fill="#ffffff" />
+
+                            <!-- Elegant Wordmark -->
+                            <text x="50" y="28" font-family="Playfair Display, serif" font-size="28" font-weight="700" fill="#0F0E47">Extract<tspan fill="#505081">ify</tspan></text>
+                        </g>
+                    </svg>
+                </div>
+                <div class="btn-group">
+                    <button class="download-btn" onclick="downloadSVG('svg-primary', 'extractify-primary')">SVG</button>
+                </div>
+            </div>
+
+            <!-- Dark Version -->
+            <div class="logo-card bg-dark">
+                <span>Dark Background</span>
+                <div class="svg-container" id="svg-dark">
+                    <svg viewBox="0 0 240 40" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="flowGradDark1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#8686AC" />
+                                <stop offset="100%" stop-color="#ffffff" />
+                            </linearGradient>
+                            <linearGradient id="flowGradDark2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#ffffff" />
+                                <stop offset="100%" stop-color="#8686AC" />
+                            </linearGradient>
+                        </defs>
+                        <g transform="translate(4, 2)">
+                            <rect x="0" y="0" width="8" height="36" rx="4" fill="#ffffff" />
+                            
+                            <rect x="14" y="0" width="22" height="8" rx="4" fill="url(#flowGradDark1)" />
+                            <circle cx="28" cy="4" r="2.5" fill="#0F0E47" />
+                            
+                            <rect x="14" y="14" width="16" height="8" rx="4" fill="#8686AC" />
+                            
+                            <rect x="14" y="28" width="22" height="8" rx="4" fill="url(#flowGradDark2)" />
+                            <circle cx="28" cy="32" r="2.5" fill="#0F0E47" />
+
+                            <text x="50" y="28" font-family="Playfair Display, serif" font-size="28" font-weight="700" fill="#ffffff">Extract<tspan fill="#8686AC">ify</tspan></text>
+                        </g>
+                    </svg>
+                </div>
+                <div class="btn-group">
+                    <button class="download-btn" onclick="downloadSVG('svg-dark', 'extractify-dark')">SVG</button>
+                </div>
+            </div>
+
+            <!-- Monochrome Version -->
+            <div class="logo-card bg-monochrome">
+                <span>Monochrome</span>
+                <div class="svg-container" id="svg-mono">
+                    <svg viewBox="0 0 240 40" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+                        <g transform="translate(4, 2)">
+                            <rect x="0" y="0" width="8" height="36" rx="4" fill="#111111" />
+                            <rect x="14" y="0" width="22" height="8" rx="4" fill="#111111" />
+                            <circle cx="28" cy="4" r="2.5" fill="#ffffff" />
+                            
+                            <rect x="14" y="14" width="16" height="8" rx="4" fill="#111111" />
+                            
+                            <rect x="14" y="28" width="22" height="8" rx="4" fill="#111111" />
+                            <circle cx="28" cy="32" r="2.5" fill="#ffffff" />
+
+                            <text x="50" y="28" font-family="Playfair Display, serif" font-size="28" font-weight="700" fill="#111111">Extractify</text>
+                        </g>
+                    </svg>
+                </div>
+                <div class="btn-group">
+                    <button class="download-btn" onclick="downloadSVG('svg-mono', 'extractify-mono')">SVG</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Icons & App Assets</h2>
+        <div class="logo-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+            
+            <!-- Icon Only -->
+            <div class="logo-card bg-light">
+                <span>Icon Only</span>
+                <div class="svg-container" id="svg-icon" style="height: 80px;">
+                    <svg viewBox="0 0 36 36" height="100%" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="iconGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#272757" />
+                                <stop offset="100%" stop-color="#505081" />
+                            </linearGradient>
+                        </defs>
+                        <rect x="0" y="0" width="8" height="36" rx="4" fill="#0F0E47" />
+                        <rect x="14" y="0" width="22" height="8" rx="4" fill="url(#iconGrad1)" />
+                        <circle cx="28" cy="4" r="2.5" fill="#ffffff" />
+                        <rect x="14" y="14" width="16" height="8" rx="4" fill="#505081" />
+                        <rect x="14" y="28" width="22" height="8" rx="4" fill="url(#iconGrad1)" />
+                        <circle cx="28" cy="32" r="2.5" fill="#ffffff" />
+                    </svg>
+                </div>
+                <div class="btn-group">
+                    <button class="download-btn" onclick="downloadSVG('svg-icon', 'extractify-icon')">SVG</button>
+                </div>
+            </div>
+
+            <!-- Favicon -->
+            <div class="logo-card bg-gray">
+                <span>Favicon</span>
+                <div class="svg-container" id="svg-favicon" style="height: 64px;">
+                    <!-- Flatter design for favicon scaledability -->
+                    <svg viewBox="0 0 64 64" height="100%" xmlns="http://www.w3.org/2000/svg">
+                        <g transform="translate(10, 10) scale(1.2)">
+                            <rect x="0" y="0" width="8" height="36" rx="4" fill="#0F0E47" />
+                            <rect x="14" y="0" width="22" height="8" rx="4" fill="#272757" />
+                            <circle cx="28" cy="4" r="2.5" fill="#ffffff" />
+                            <rect x="14" y="14" width="16" height="8" rx="4" fill="#505081" />
+                            <rect x="14" y="28" width="22" height="8" rx="4" fill="#272757" />
+                            <circle cx="28" cy="32" r="2.5" fill="#ffffff" />
+                        </g>
+                    </svg>
+                </div>
+                <div class="btn-group">
+                    <button class="download-btn" onclick="downloadSVG('svg-favicon', 'extractify-favicon')">SVG</button>
+                </div>
+            </div>
+
+            <!-- App Icon -->
+            <div class="logo-card bg-light" style="padding: 20px;">
+                <span>App Icon</span>
+                <div class="svg-container" id="svg-app" style="height: 120px;">
+                    <svg viewBox="0 0 120 120" height="100%" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="appBg" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#0F0E47" />
+                                <stop offset="100%" stop-color="#272757" />
+                            </linearGradient>
+                            <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+                                <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.15" />
+                            </filter>
+                        </defs>
+                        <rect x="4" y="4" width="112" height="112" rx="26" fill="url(#appBg)" filter="url(#shadow)"/>
+                        <g transform="translate(42, 42)">
+                            <rect x="0" y="0" width="8" height="36" rx="4" fill="#ffffff" />
+                            <rect x="14" y="0" width="22" height="8" rx="4" fill="#8686AC" />
+                            <circle cx="28" cy="4" r="2.5" fill="#0F0E47" />
+                            <rect x="14" y="14" width="16" height="8" rx="4" fill="#ffffff" />
+                            <rect x="14" y="28" width="22" height="8" rx="4" fill="#8686AC" />
+                            <circle cx="28" cy="32" r="2.5" fill="#0F0E47" />
+                        </g>
+                    </svg>
+                </div>
+                <div class="btn-group">
+                    <button class="download-btn" onclick="downloadSVG('svg-app', 'extractify-app-icon')">SVG</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Brand Colors</h2>
+        <div class="color-grid">
+            
+            <div class="color-swatch">
+                <div class="color-block" style="background-color: #0F0E47;"></div>
+                <div class="color-info">
+                    <div class="color-name">Deep Navy</div>
+                    <div class="color-hex">#0F0E47 â€¢ Primary</div>
+                </div>
+            </div>
+
+            <div class="color-swatch">
+                <div class="color-block" style="background-color: #272757;"></div>
+                <div class="color-info">
+                    <div class="color-name">Indigo</div>
+                    <div class="color-hex">#272757 â€¢ Secondary</div>
+                </div>
+            </div>
+
+            <div class="color-swatch">
+                <div class="color-block" style="background-color: #505081;"></div>
+                <div class="color-info">
+                    <div class="color-name">Muted Purple</div>
+                    <div class="color-hex">#505081 â€¢ Accent</div>
+                </div>
+            </div>
+
+            <div class="color-swatch">
+                <div class="color-block" style="background-color: #8686AC;"></div>
+                <div class="color-info">
+                    <div class="color-name">Lavender Gray</div>
+                    <div class="color-hex">#8686AC â€¢ Soft Tone</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Typography</h2>
+        <div class="typo-sample">
+            <div class="typo-brand">Aa</div>
+            <div>
+                <div style="font-family: var(--font-brand); font-size: 2rem; color: var(--primary); margin-bottom: 8px;">Playfair Display</div>
+                <div class="typo-details">
+                    <span>Used for: Wordmark, Hero Headings</span>
+                    <span>Weights: SemiBold (600), Bold (700)</span>
+                </div>
+            </div>
+        </div>
+        <div class="typo-sample" style="margin-top: 40px;">
+            <div class="typo-brand" style="font-family: var(--font-ui); color: var(--secondary);">Aa</div>
+            <div>
+                <div style="font-family: var(--font-ui); font-size: 2rem; color: var(--secondary); margin-bottom: 8px;">Inter</div>
+                <div class="typo-details">
+                    <span>Used for: Interface, Body Copy</span>
+                    <span>Weights: Regular (400), Medium (500), SemiBold (600)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    function downloadSVG(containerId, filename) {
+        const container = document.getElementById(containerId);
+        const svg = container.querySelector('svg');
+        const serializer = new XMLSerializer();
+        let source = serializer.serializeToString(svg);
+        
+        // Add name spaces.
+        if(!source.match(/^<svg[^>]+xmlns="http\:\/\/www\.w3\.org\/2000\/svg"/)){
+            source = source.replace(/^<svg/, '<svg xmlns="http://www.w3.org/2000/svg"');
+        }
+        if(!source.match(/^<svg[^>]+"http\:\/\/www\.w3\.org\/1999\/xlink"/)){
+            source = source.replace(/^<svg/, '<svg xmlns:xlink="http://www.w3.org/1999/xlink"');
+        }
+        
+        // Add xml declaration
+        source = '<?xml version="1.0" standalone="no"?>\r\n' + source; // <-- This is valid XML now!
+        
+        // Convert svg source to URI data scheme.
+        const url = "data:image/svg+xml;charset=utf-8,"+encodeURIComponent(source);
+        
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename + '.svg';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    }
+</script>
+
+</body>
+</html>
+

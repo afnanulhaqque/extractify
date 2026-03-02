@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lead Generation - Extractify</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --hero-gradient: var(--gradient-indigo);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <header class="solution-hero animate-fade-in">
+        <div class="container">
+            <div class="no-code-badge"
+                style="background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); margin-bottom: 2rem;">
+                <i data-lucide="users" style="width: 16px; height: 16px;"></i> Lead Generation
+            </div>
+            <h1>Build High-Quality Prospect Lists in Minutes</h1>
+            <p>Automatically extract contact details, company information, and social profiles from LinkedIn, Yelp,
+                Yellow Pages, and any business directory.</p>
+            <div style="display: flex; gap: var(--spacing-md); justify-content: center; margin-top: 2rem;">
+                <a href="../start-free.html" class="btn btn-white btn-animated" style="padding: 1rem 2.5rem;">Start
+                    Free Trial</a>
+                <a href="#features" class="btn btn-outline-white" style="padding: 1rem 2.5rem;">Build List</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="features" class="section animate-fade-in">
+        <div class="container">
+            <h2 class="text-center" style="margin-bottom: 4rem;">Everything You Need to Scale Your Outreach</h2>
+            <div class="feature-grid">
+                <div class="card glass-card-hover feature-item">
+                    <div class="feature-icon"><i data-lucide="zap"></i></div>
+                    <h4>Bypass Manual Entry</h4>
+                    <p style="color: var(--color-text-muted);">Stop copying and pasting. Extract thousands of rows of
+                        lead data with a single click from any directory.</p>
+                </div>
+                <div class="card glass-card-hover feature-item">
+                    <div class="feature-icon"><i data-lucide="shield-check"></i></div>
+                    <h4>Verified Data Only</h4>
+                    <p style="color: var(--color-text-muted);">Ensure your lists are clean and structured. No more
+                        duplicate entries or broken formatting in your CRM.</p>
+                </div>
+                <div class="card glass-card-hover feature-item">
+                    <div class="feature-icon"><i data-lucide="refresh-cw"></i></div>
+                    <h4>Cloud Automation</h4>
+                    <p style="color: var(--color-text-muted);">Schedule your scrapers to run daily. Get new leads
+                        delivered to your email or Slack while you sleep.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="preview-section" style="position: relative; overflow: hidden;">
+        <!-- Glowing Background Blob -->
+        <div
+            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 400px; background: var(--hero-gradient); filter: blur(120px); opacity: 0.35; border-radius: 50%; pointer-events: none; z-index: 0;">
+        </div>
+
+        <div class="container" style="position: relative; z-index: 1;">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <span
+                    style="color: var(--color-primary); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.85rem;">Live
+                    Preview</span>
+                <h2 style="margin-top: 0.5rem;">Sample Extracted Data</h2>
+            </div>
+
+            <div class="glass-table-container preview-container">
+                <table class="data-table" style="width: 100%; border-collapse: collapse; text-align: left;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid var(--color-border);">
+                            <th style="padding: 15px; font-weight: 700;">Full Name</th>
+                            <th style="padding: 15px; font-weight: 700;">Role</th>
+                            <th style="padding: 15px; font-weight: 700;">Company</th>
+                            <th style="padding: 15px; font-weight: 700;">Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
+                            <td style="padding: 15px;">Alex Rivera</td>
+                            <td style="padding: 15px;">Head of Sales</td>
+                            <td style="padding: 15px;">CloudScale Inc</td>
+                            <td style="padding: 15px; color: var(--color-primary); font-weight: 600;">alex@cloudscale.io
+                            </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
+                            <td style="padding: 15px;">Jessica Wong</td>
+                            <td style="padding: 15px;">Founder</td>
+                            <td style="padding: 15px;">GreenLeaf Media</td>
+                            <td style="padding: 15px; color: var(--color-primary); font-weight: 600;">jess@greenleaf.com
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 15px;">David Miller</td>
+                            <td style="padding: 15px;">Marketing Dir.</td>
+                            <td style="padding: 15px;">Urban Logistics</td>
+                            <td style="padding: 15px; color: var(--color-primary); font-weight: 600;">
+                                d.miller@urbanlog.co</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="cta-banner"
+            style="background: var(--hero-gradient); position: relative; overflow: hidden; box-shadow: var(--shadow-2xl); border: 1px solid rgba(255,255,255,0.1);">
+            <div
+                style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at center, rgba(255,255,255,0.15) 0%, transparent 50%); pointer-events: none;">
+            </div>
+            <div style="position: relative; z-index: 1;">
+                <h2>Data drives decisions.</h2>
+                <p style="margin-top: 1rem; opacity: 0.8; font-size: 1.1rem;">Join 3,500+ analysts using Extractify to
+                    power
+                    their reports.</p>
+                <a href="../start-free.html" class="btn btn-white btn-animated"
+                    style="margin-top: 2rem; padding: 1rem 3.5rem;">Create
+                    My Lead Scraper</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="../js/components.js"></script>
+    <script>
+        // Adjust lucide for this page
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.lucide) {
+                window.lucide.createIcons();
+            }
+        });
+    </script>
+</body>
+
+</html>
