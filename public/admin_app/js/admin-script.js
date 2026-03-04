@@ -93,17 +93,29 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (text.includes('Export') || text.includes('Download')) {
                 showToast('Download started...', 'info');
             } else if (text === 'Cancel') {
-                if(confirm("Are you sure you want to cancel your plan?")) {
-                    showToast('Plan cancellation requested.', 'info');
-                }
-            } else if (text === 'Remove') {
-                if(confirm("Are you sure you want to remove this user?")) {
-                    const row = btn.closest('tr');
-                    if(row) {
-                        row.style.display = 'none';
-                        showToast('User removed from project.', 'success');
+                showConfirmModal({
+                    title: 'Cancel Plan',
+                    message: 'Are you sure you want to cancel your plan?',
+                    confirmText: 'Yes, Cancel',
+                    type: 'warning',
+                    onConfirm: () => {
+                        showToast('Plan cancellation requested.', 'info');
                     }
-                }
+                });
+            } else if (text === 'Remove') {
+                showConfirmModal({
+                    title: 'Remove User',
+                    message: 'Are you sure you want to remove this user?',
+                    confirmText: 'Remove',
+                    type: 'danger',
+                    onConfirm: () => {
+                        const row = btn.closest('tr');
+                        if(row) {
+                            row.style.display = 'none';
+                            showToast('User removed from project.', 'success');
+                        }
+                    }
+                });
             } else if (text === 'Connect') {
                  showToast('Integration connected!', 'success');
                  btn.textContent = 'Connected';
@@ -125,13 +137,19 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (icon && icon.classList.contains('ph-stop')) {
                 showToast('Project stopped.', 'warning');
             } else if (icon && icon.classList.contains('ph-trash')) {
-                if(confirm('Are you sure you want to delete this row?')) {
+            showConfirmModal({
+                title: 'Delete Row',
+                message: 'Are you sure you want to delete this row?',
+                confirmText: 'Delete',
+                type: 'danger',
+                onConfirm: () => {
                     const row = iconBtn.closest('tr');
                     if(row) {
                         row.style.display = 'none';
                         showToast('Row deleted.', 'info');
                     }
                 }
+            });
             } else if (icon && icon.classList.contains('ph-copy')) {
                  showToast('Copied to clipboard!', 'success');
             }
@@ -147,6 +165,63 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+
+    // Custom Confirmation Modal System
+    function showConfirmModal(config) {
+        const modal = document.getElementById('custom-confirm-modal');
+        const titleEl = document.getElementById('modal-title');
+        const messageEl = document.getElementById('modal-message');
+        const confirmBtn = document.getElementById('modal-confirm-btn');
+        const cancelBtn = document.getElementById('modal-cancel-btn');
+        const iconContainer = modal.querySelector('.modal-icon-container');
+        const icon = iconContainer.querySelector('i');
+
+        if (!modal) return;
+
+        // Set content
+        titleEl.textContent = config.title || 'Confirm Action';
+        messageEl.textContent = config.message || 'Are you sure?';
+        confirmBtn.textContent = config.confirmText || 'Confirm';
+        cancelBtn.textContent = config.cancelText || 'Cancel';
+
+        // Set type (colors/icons)
+        modal.className = 'modal-overlay active'; // Reset
+        if (config.type) {
+            modal.classList.add(`type-${config.type}`);
+            
+            // Update icon based on type
+            icon.className = 'ph modal-icon';
+            if (config.type === 'danger') icon.classList.add('ph-warning-circle');
+            else if (config.type === 'warning') icon.classList.add('ph-warning');
+            else if (config.type === 'success') icon.classList.add('ph-check-circle');
+            else icon.classList.add('ph-info');
+        } else {
+            icon.className = 'ph modal-icon ph-warning-circle';
+        }
+
+        // Handle buttons
+        const closeModal = () => {
+            modal.classList.remove('active');
+            // Remove listeners to prevent memory leaks and multiple triggers
+            confirmBtn.onclick = null;
+            cancelBtn.onclick = null;
+        };
+
+        confirmBtn.onclick = () => {
+            closeModal();
+            if (config.onConfirm) config.onConfirm();
+        };
+
+        cancelBtn.onclick = () => {
+            closeModal();
+            if (config.onCancel) config.onCancel();
+        };
+
+        // Close on clicking overlay
+        modal.onclick = (e) => {
+            if (e.target === modal) closeModal();
+        };
+    }
 
     // Toast Notification System
     function showToast(message, type = 'info') {
@@ -352,13 +427,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ---- Logout Logic ----
     function handleLogout() {
-        if (confirm('Are you sure you want to logout?')) {
-            showToast('Logging out...', 'info');
-            localStorage.removeItem('isAuthenticated');
-            setTimeout(() => {
-                window.location.href = '../login.html';
-            }, 1000);
-        }
+        showConfirmModal({
+            title: 'Logout',
+            message: 'Are you sure you want to logout?',
+            confirmText: 'Logout',
+            type: 'warning',
+            onConfirm: () => {
+                showToast('Logging out...', 'info');
+                localStorage.removeItem('isAuthenticated');
+                setTimeout(() => {
+                    window.location.href = '../login.html';
+                }, 1000);
+            }
+        });
     }
 
     const logoutBtn = document.getElementById('logout-btn');

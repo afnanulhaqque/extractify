@@ -63,10 +63,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const tasks = [];
     if (navbarTarget) {
-        tasks.push(loadComponent(navbarTarget, 'ui-components/navbar.html', basePath));
+        tasks.push(loadComponent(navbarTarget, '/ui-components/navbar.html'));
     }
     if (footerTarget) {
-        tasks.push(loadComponent(footerTarget, 'ui-components/footer.html', basePath));
+        tasks.push(loadComponent(footerTarget, '/ui-components/footer.html'));
     }
 
     // Inject Modals globally
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.head.appendChild(chatCss);
     }
 
-    tasks.push(loadComponent(modalContainer, 'ui-components/modals.html', basePath));
+    tasks.push(loadComponent(modalContainer, '/ui-components/modals.html'));
 
     // Inject Favicon if not present
     if (!document.querySelector('link[rel="icon"]')) {

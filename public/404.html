@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - Extractify</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/logo-icon-zoomed.png">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <!-- Base CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <style>
+        .error-page {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 0 6rem;
+            background: linear-gradient(180deg, var(--color-bg-main) 0%, rgba(79, 70, 229, 0.05) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .error-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 10% 20%, rgba(79, 70, 229, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .error-container {
+            display: flex;
+            align-items: center;
+            gap: 5rem;
+            max-width: 1100px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .error-illustration {
+            flex: 1.2;
+            display: flex;
+            justify-content: center;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .error-illustration img {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 20px 30px rgba(15, 14, 71, 0.15));
+        }
+
+        .error-content {
+            flex: 1;
+        }
+
+        .error-content h1 {
+            font-size: clamp(4rem, 10vw, 6rem);
+            font-weight: 800;
+            color: var(--color-primary);
+            line-height: 0.9;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.04em;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .error-content p {
+            font-size: 1.5rem;
+            color: var(--color-text-muted);
+            margin-bottom: 3rem;
+            line-height: 1.4;
+            font-family: 'Inter', sans-serif;
+            max-width: 400px;
+        }
+
+        @media (max-width: 992px) {
+            .error-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 3rem;
+            }
+
+            .error-content p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .error-page {
+                padding: 6rem 0 4rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .error-content h1 {
+                font-size: 4.5rem;
+            }
+
+            .error-content p {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <main class="error-page">
+        <div class="container">
+            <div class="error-container">
+                <div class="error-illustration">
+                    <img src="/assets/404-.png" alt="Bigfoot broken the link">
+                </div>
+                <div class="error-content">
+                    <h1>OOPS!</h1>
+                    <p>Looks like big foot has broken the link</p>
+                    <div class="error-actions">
+                        <a href="/" class="btn btn-primary btn-animated"
+                            style="padding: 1.25rem 3rem; font-size: 1.1rem; font-weight: 700; background: var(--gradient-indigo); border: none;">Back
+                            to homepage</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="/js/components.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

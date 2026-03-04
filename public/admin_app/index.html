@@ -1627,6 +1627,23 @@
     <!-- Hidden file input for profile picture upload -->
     <input type="file" id="profile-upload-input" accept="image/*" style="display: none;">
 
+    <!-- Custom Confirmation Modal -->
+    <div id="custom-confirm-modal" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-icon-container">
+                <i class="ph ph-warning-circle modal-icon"></i>
+            </div>
+            <div class="modal-content">
+                <h3 id="modal-title">Confirm Action</h3>
+                <p id="modal-message">Are you sure you want to proceed?</p>
+            </div>
+            <div class="modal-actions">
+                <button id="modal-cancel-btn" class="btn btn-secondary">Cancel</button>
+                <button id="modal-confirm-btn" class="btn btn-primary">Confirm</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="js/admin-script.js"></script>
 
