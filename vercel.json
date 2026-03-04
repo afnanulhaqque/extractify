@@ -7,39 +7,35 @@
       "use": "@vercel/node"
     },
     {
-      "src": "*.html",
+      "src": "public/**/*.html",
       "use": "@vercel/static"
     },
     {
-      "src": "admin_app/index.html",
+      "src": "public/css/**",
       "use": "@vercel/static"
     },
     {
-      "src": "css/**",
+      "src": "public/js/**",
       "use": "@vercel/static"
     },
     {
-      "src": "js/**",
+      "src": "public/assets/**",
       "use": "@vercel/static"
     },
     {
-      "src": "assets/**",
+      "src": "public/ui-components/**",
       "use": "@vercel/static"
     },
     {
-      "src": "ui-components/**",
+      "src": "public/solutions/**",
       "use": "@vercel/static"
     },
     {
-      "src": "solutions/**",
+      "src": "public/admin_app/css/**",
       "use": "@vercel/static"
     },
     {
-      "src": "admin_app/css/**",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "admin_app/js/**",
+      "src": "public/admin_app/js/**",
       "use": "@vercel/static"
     }
   ],
@@ -50,11 +46,15 @@
     },
     {
       "source": "/admin",
-      "destination": "/admin_app/index.html"
+      "destination": "/public/admin_app/index.html"
     },
     {
       "source": "/admin/(.*)",
-      "destination": "/admin_app/index.html"
+      "destination": "/public/admin_app/index.html"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/public/$1"
     }
   ]
 }
