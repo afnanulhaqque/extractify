@@ -70,6 +70,9 @@
                 <a href="#view-settings" class="nav-item" data-target="view-settings">
                     <i class="ph ph-gear"></i> Settings
                 </a>
+                <a href="#" class="nav-item nav-item-danger" id="logout-btn">
+                    <i class="ph ph-sign-out"></i> Logout
+                </a>
             </nav>
 
             <div class="workspace-switcher">
@@ -106,8 +109,74 @@
                         <i class="ph ph-bell"></i>
                     </button>
                     <div style="width: 1px; height: 24px; background-color: var(--border-color); margin: 0 8px;"></div>
-                    <div class="profile-avatar">
-                        JS
+                    <div class="profile-dropdown-container">
+                        <div class="profile-avatar" id="nav-avatar">
+                            <span class="avatar-content">JS</span>
+                        </div>
+
+                        <!-- Rich Dropdown Menu -->
+                        <div class="profile-dropdown" id="profile-dropdown">
+                            <div class="dropdown-section accounts-section">
+                                <div class="account-item active">
+                                    <div class="account-avatar">
+                                        <span class="avatar-content">JS</span>
+                                    </div>
+                                    <div class="account-info">
+                                        <div class="account-name">John Smith</div>
+                                        <div class="account-email">john@extractify.app</div>
+                                    </div>
+                                    <span class="account-badge personal">Personal</span>
+                                </div>
+                                <div class="account-item">
+                                    <div class="account-avatar" style="background-color: var(--secondary-color);">
+                                        <span class="avatar-content">AC</span>
+                                    </div>
+                                    <div class="account-info">
+                                        <div class="account-name">Acme Corp</div>
+                                        <div class="account-email">team@acmecorp.com</div>
+                                    </div>
+                                    <span class="account-badge team">Team</span>
+                                </div>
+                            </div>
+
+                            <div class="dropdown-divider"></div>
+
+                            <div class="dropdown-section list-section">
+                                <a href="#view-scrapers" class="dropdown-link" onclick="switchView('view-scrapers')"><i
+                                        class="ph ph-list-bullets"></i> My Scrapers</a>
+                                <a href="#view-team" class="dropdown-link" onclick="switchView('view-team')"><i
+                                        class="ph ph-users"></i> Team Management</a>
+                                <a href="#view-api" class="dropdown-link" onclick="switchView('view-api')"><i
+                                        class="ph ph-plug"></i> API Management</a>
+                            </div>
+
+                            <div class="dropdown-divider"></div>
+
+                            <div class="dropdown-section list-section">
+                                <a href="#" class="dropdown-link"><i class="ph ph-currency-circle-dollar"></i> Pricing
+                                    Plans</a>
+                                <a href="#view-billing" class="dropdown-link" onclick="switchView('view-billing')"><i
+                                        class="ph ph-credit-card"></i> Billing & Invoices</a>
+                                <a href="#" class="dropdown-link upgrade"><i class="ph ph-lightbulb"></i> Upgrade to
+                                    Pro</a>
+                                <a href="#" class="dropdown-link"><i class="ph ph-gift"></i> Referral Program</a>
+                            </div>
+
+                            <div class="dropdown-divider"></div>
+
+                            <div class="dropdown-section list-section">
+                                <a href="#view-settings" class="dropdown-link" onclick="switchView('view-settings')"><i
+                                        class="ph ph-gear"></i> Profile Settings</a>
+                                <a href="#" class="dropdown-link"><i class="ph ph-bell"></i> Notifications</a>
+                            </div>
+
+                            <div class="dropdown-divider"></div>
+
+                            <div class="dropdown-section list-section logout-section">
+                                <a href="#" id="dropdown-logout" class="dropdown-link"><i class="ph ph-sign-out"></i>
+                                    Log Out</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </header>
@@ -1403,9 +1472,10 @@
                                 <tbody style="font-family: var(--font-sans); font-size: 0.9rem;">
                                     <tr>
                                         <td style="font-weight: 500; display: flex; align-items: center; gap: 12px;">
-                                            <div
-                                                style="width: 32px; height: 32px; border-radius: 50%; background-color: var(--accent-color); color: white; display: flex; align-items: center; justify-content: center; font-weight: 600;">
-                                                JS</div>
+                                            <div style="width: 32px; height: 32px; border-radius: 50%; background-color: var(--accent-color); color: white; display: flex; align-items: center; justify-content: center; font-weight: 600;"
+                                                id="team-me-avatar">
+                                                <span class="avatar-content">JS</span>
+                                            </div>
                                             John Smith (You)
                                         </td>
                                         <td style="color: var(--text-muted);">john@acmecorp.com</td>
@@ -1482,10 +1552,10 @@
 
                         <div
                             style="display: flex; gap: var(--spacing-xl); margin-bottom: var(--spacing-xl); align-items: center;">
-                            <div
-                                style="width: 100px; height: 100px; border-radius: 50%; background-color: var(--accent-color); color: white; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; font-weight: 700; position: relative;">
-                                JS
-                                <button
+                            <div style="width: 100px; height: 100px; border-radius: 50%; background-color: var(--accent-color); color: white; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; font-weight: 700; position: relative;"
+                                id="settings-avatar">
+                                <span class="avatar-content">JS</span>
+                                <button id="change-avatar-btn"
                                     style="position: absolute; bottom: 0; right: 0; width: 32px; height: 32px; border-radius: 50%; background-color: var(--primary-color); color: white; border: 2px solid var(--bg-surface); cursor: pointer; display: flex; align-items: center; justify-content: center;"><i
                                         class="ph ph-camera"></i></button>
                             </div>
@@ -1553,6 +1623,9 @@
             </div>
         </main>
     </div>
+
+    <!-- Hidden file input for profile picture upload -->
+    <input type="file" id="profile-upload-input" accept="image/*" style="display: none;">
 
     <!-- Scripts -->
     <script src="js/admin-script.js"></script>

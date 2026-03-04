@@ -73,6 +73,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     const modalContainer = document.createElement('div');
     modalContainer.id = 'global-modals-placeholder';
     document.body.appendChild(modalContainer);
+    
+    // Inject Chat CSS
+    if (!document.querySelector('link[href*="chat-modal.css"]')) {
+        const chatCss = document.createElement('link');
+        chatCss.rel = 'stylesheet';
+        chatCss.href = basePath + 'css/chat-modal.css';
+        document.head.appendChild(chatCss);
+    }
+
     tasks.push(loadComponent(modalContainer, 'ui-components/modals.html', basePath));
 
     // Inject Favicon if not present
@@ -86,6 +95,18 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     await Promise.all(tasks);
     
+    // Load Chat Script if not present
+    if (!document.querySelector('script[src*="chat-modal.js"]')) {
+        const chatScript = document.createElement('script');
+        chatScript.src = basePath + 'js/chat-modal.js';
+        chatScript.onload = () => {
+            if (window.initChatModal) window.initChatModal();
+        };
+        document.body.appendChild(chatScript);
+    } else {
+        if (window.initChatModal) window.initChatModal();
+    }
+
     // Re-initialize events for injected content
     initializeNavbarEvents();
     if (typeof window.initModals === 'function') {

@@ -147,6 +147,14 @@
     </div>
     <script>
         lucide.createIcons();
+
+        // Login Simulation
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            // In a real app, you'd verify credentials here
+            localStorage.setItem('isAuthenticated', 'true');
+            window.location.href = 'dashboard.html';
+        });
     </script>
 </body>
 

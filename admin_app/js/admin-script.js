@@ -1,4 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // ---- Session Check ----
+    if (localStorage.getItem('isAuthenticated') !== 'true') {
+        window.location.href = '../login.html';
+        return; // Prevent further execution
+    }
+
     // ---- SPA Navigation Logic ----
     const navItems = document.querySelectorAll('.nav-item');
     const viewSections = document.querySelectorAll('.view-section');
@@ -340,6 +346,116 @@ document.addEventListener('DOMContentLoaded', () => {
                 step.classList.remove('completed');
             } else {
                 step.classList.remove('active', 'completed');
+            }
+        });
+    }
+
+    // ---- Logout Logic ----
+    function handleLogout() {
+        if (confirm('Are you sure you want to logout?')) {
+            showToast('Logging out...', 'info');
+            localStorage.removeItem('isAuthenticated');
+            setTimeout(() => {
+                window.location.href = '../login.html';
+            }, 1000);
+        }
+    }
+
+    const logoutBtn = document.getElementById('logout-btn');
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            handleLogout();
+        });
+    }
+
+    // ---- Profile Picture Upload & Persistence ----
+    const profileUploadInput = document.getElementById('profile-upload-input');
+    const changeAvatarBtn = document.getElementById('change-avatar-btn');
+    const navAvatar = document.getElementById('nav-avatar');
+    const profileDropdown = document.getElementById('profile-dropdown');
+
+    function updateAllAvatars(imageData) {
+        // Find all avatar elements including the ones in the new dropdown
+        const avatarContainers = [
+            document.getElementById('nav-avatar'),
+            document.getElementById('settings-avatar'),
+            document.getElementById('team-me-avatar'),
+            // The first item in the dropdown (JS) is assumed to be the current user
+            document.querySelector('.accounts-section .account-item.active .account-avatar')
+        ];
+
+        avatarContainers.forEach(container => {
+            if (container) {
+                const avatarContent = container.querySelector('.avatar-content');
+                let img = container.querySelector('img');
+                
+                if (imageData) {
+                    if (!img) {
+                        img = document.createElement('img');
+                        container.insertBefore(img, avatarContent);
+                    }
+                    img.src = imageData;
+                    if (avatarContent) avatarContent.style.display = 'none';
+                } else {
+                    if (img) img.remove();
+                    if (avatarContent) avatarContent.style.display = 'flex';
+                }
+            }
+        });
+    }
+
+    // Load saved avatar on startup
+    const savedAvatar = localStorage.getItem('user_avatar');
+    if (savedAvatar) {
+        updateAllAvatars(savedAvatar);
+    }
+
+    // Toggle Profile Dropdown
+    if (navAvatar && profileDropdown) {
+        navAvatar.addEventListener('click', (e) => {
+            e.stopPropagation();
+            profileDropdown.classList.toggle('active');
+        });
+
+        // Close on outside click
+        document.addEventListener('click', (e) => {
+            if (profileDropdown.classList.contains('active') && !profileDropdown.contains(e.target) && e.target !== navAvatar) {
+                profileDropdown.classList.remove('active');
+            }
+        });
+        
+        // Handle dropdown logout specifically
+        const dropdownLogout = document.getElementById('dropdown-logout');
+        if (dropdownLogout) {
+            dropdownLogout.addEventListener('click', (e) => {
+                e.preventDefault();
+                handleLogout();
+            });
+        }
+    }
+
+    if (changeAvatarBtn && profileUploadInput) {
+        changeAvatarBtn.addEventListener('click', () => {
+            profileUploadInput.click();
+        });
+
+        profileUploadInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                if (file.size > 2 * 1024 * 1024) {
+                    showToast('Image too large. Max 2MB.', 'danger');
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    const imageData = event.target.result;
+                    localStorage.setItem('user_avatar', imageData);
+                    updateAllAvatars(imageData);
+                    showToast('Profile picture updated!', 'success');
+                };
+                reader.readAsDataURL(file);
             }
         });
     }

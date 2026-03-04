@@ -158,22 +158,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Modals Initialization (Global Function)
     // ==========================================
     window.initModals = function() {
-        // --- New Modals Logic (Contact & Chat) ---
+        // --- Contact Modal Logic ---
         const contactModal = document.getElementById('contactModal');
-        const chatModal = document.getElementById('chatModal');
         const openContactBtn = document.getElementById('openContactBtn');
-        const openChatBtnFooter = document.getElementById('openChatBtnFooter');
-        const fabBtn = document.getElementById('fabBtn');
-        
         const closeContactBtn = document.getElementById('closeContactBtn');
-        const closeChatBtn = document.getElementById('closeChatBtn');
-        
         const contactForm = document.getElementById('contactForm');
         const contactSuccess = document.getElementById('contactSuccess');
-        
-        const chatForm = document.getElementById('chatForm');
-        const chatMessages = document.getElementById('chatMessages');
-        const chatInput = document.getElementById('chatInput');
 
         const openModal = (modal) => {
             if (!modal) return;
@@ -198,19 +188,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Open Listeners
         if (openContactBtn) openContactBtn.addEventListener('click', (e) => { e.preventDefault(); openModal(contactModal); });
-        if (openChatBtnFooter) openChatBtnFooter.addEventListener('click', (e) => { e.preventDefault(); openModal(chatModal); });
-        if (fabBtn) fabBtn.addEventListener('click', (e) => { e.preventDefault(); openModal(chatModal); });
 
         // Close Listeners
         if (closeContactBtn) closeContactBtn.addEventListener('click', () => closeModal(contactModal));
-        if (closeChatBtn) closeChatBtn.addEventListener('click', () => closeModal(chatModal));
         
-        [contactModal, chatModal].forEach(modal => {
-            if (modal) {
-                const overlay = modal.querySelector('.demo-modal-overlay');
-                if (overlay) overlay.addEventListener('click', () => closeModal(modal));
-            }
-        });
+        if (contactModal) {
+            const overlay = contactModal.querySelector('.demo-modal-overlay');
+            if (overlay) overlay.addEventListener('click', () => closeModal(contactModal));
+        }
 
         // Form Handling
         if (contactForm && contactSuccess) {
@@ -219,32 +204,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 contactForm.style.display = 'none';
                 contactSuccess.style.display = 'block';
                 console.log('Contact form submitted');
-            });
-        }
-
-        if (chatForm && chatInput && chatMessages) {
-            chatForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const message = chatInput.value.trim();
-                if (message) {
-                    // Add user message
-                    const userMsg = document.createElement('div');
-                    userMsg.style.cssText = 'align-self: flex-end; max-width: 80%; background: var(--color-primary); color: white; padding: var(--spacing-sm) var(--spacing-md); border-radius: 16px 16px 0 16px; font-size: 0.95rem;';
-                    userMsg.textContent = message;
-                    chatMessages.appendChild(userMsg);
-                    
-                    chatInput.value = '';
-                    chatMessages.scrollTop = chatMessages.scrollHeight;
-                    
-                    // Add automated reply
-                    setTimeout(() => {
-                        const reply = document.createElement('div');
-                        reply.style.cssText = 'align-self: flex-start; max-width: 80%; background: #f3f4f6; padding: var(--spacing-sm) var(--spacing-md); border-radius: 0 16px 16px 16px; font-size: 0.95rem;';
-                        reply.textContent = "Thanks for your message! One of our agents will be with you shortly.";
-                        chatMessages.appendChild(reply);
-                        chatMessages.scrollTop = chatMessages.scrollHeight;
-                    }, 1000);
-                }
             });
         }
     };

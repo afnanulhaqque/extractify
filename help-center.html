@@ -226,6 +226,66 @@
             border: 1px solid var(--color-border);
             box-shadow: var(--shadow-md);
         }
+
+        /* Detailed View Styles */
+        .help-main-view,
+        .help-detailed-view {
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .help-detailed-view {
+            display: none;
+            padding: var(--spacing-4xl) 0;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: var(--spacing-2xl);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .back-btn:hover {
+            transform: translateX(-5px);
+        }
+
+        .detailed-content-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: var(--spacing-3xl);
+            border-radius: var(--border-radius-xl);
+            border: 1px solid var(--color-border);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .article-content h2 {
+            margin-top: var(--spacing-2xl);
+            color: var(--color-primary);
+        }
+
+        .article-content p {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: var(--color-text-main);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .article-content ul {
+            margin-bottom: var(--spacing-lg);
+            padding-left: var(--spacing-xl);
+        }
+
+        .article-content li {
+            margin-bottom: var(--spacing-sm);
+            font-size: 1rem;
+            color: var(--color-text-muted);
+        }
     </style>
 </head>
 
@@ -264,81 +324,110 @@
         </div>
     </header>
 
-    <!-- Categories -->
-    <section class="section">
-        <div class="container">
-            <div class="category-grid">
-                <a href="#" class="category-card">
-                    <div class="category-icon text-primary"><i data-lucide="rocket"
-                            style="width: 40px; height: 40px;"></i></div>
-                    <h3>Getting Started</h3>
-                    <p>Learn the basics of Extractify and set up your first scraper in minutes.</p>
-                </a>
-                <a href="#" class="category-card">
-                    <div class="category-icon text-primary"><i data-lucide="user"
-                            style="width: 40px; height: 40px;"></i></div>
-                    <h3>Account & Billing</h3>
-                    <p>Manage your subscription, invoices, and profile settings.</p>
-                </a>
-                <a href="#" class="category-card">
-                    <div class="category-icon text-primary"><i data-lucide="settings"
-                            style="width: 40px; height: 40px;"></i></div>
-                    <h3>Scraping Tools</h3>
-                    <p>Master advanced selectors, pagination, and dynamic content handling.</p>
-                </a>
-                <a href="#" class="category-card">
-                    <div class="category-icon text-primary"><i data-lucide="bot" style="width: 40px; height: 40px;"></i>
+    <!-- Main Views Wrapper -->
+    <main id="help-content-gate">
+        <!-- Main Help View -->
+        <div id="main-help-view" class="help-main-view">
+            <!-- Categories -->
+            <section class="section">
+                <div class="container">
+                    <div class="category-grid">
+                        <div class="category-card" data-category="getting-started" style="cursor: pointer;">
+                            <div class="category-icon text-primary"><i data-lucide="rocket"
+                                    style="width: 40px; height: 40px;"></i></div>
+                            <h3>Getting Started</h3>
+                            <p>Learn the basics of Extractify and set up your first scraper in minutes.</p>
+                        </div>
+                        <div class="category-card" data-category="billing" style="cursor: pointer;">
+                            <div class="category-icon text-primary"><i data-lucide="user"
+                                    style="width: 40px; height: 40px;"></i></div>
+                            <h3>Account & Billing</h3>
+                            <p>Manage your subscription, invoices, and profile settings.</p>
+                        </div>
+                        <div class="category-card" data-category="tools" style="cursor: pointer;">
+                            <div class="category-icon text-primary"><i data-lucide="settings"
+                                    style="width: 40px; height: 40px;"></i></div>
+                            <h3>Scraping Tools</h3>
+                            <p>Master advanced selectors, pagination, and dynamic content handling.</p>
+                        </div>
+                        <div class="category-card" data-category="automation" style="cursor: pointer;">
+                            <div class="category-icon text-primary"><i data-lucide="bot"
+                                    style="width: 40px; height: 40px;"></i>
+                            </div>
+                            <h3>Automation</h3>
+                            <p>Set up schedules, webhooks, and cloud-based recurring tasks.</p>
+                        </div>
+                        <div class="category-card" data-category="api" style="cursor: pointer;">
+                            <div class="category-icon text-primary"><i data-lucide="plug"
+                                    style="width: 40px; height: 40px;"></i></div>
+                            <h3>API & Integrations</h3>
+                            <p>Connect Extractify to your existing workflows via API and third-party tools.</p>
+                        </div>
+                        <div class="category-card" data-category="troubleshooting" style="cursor: pointer;">
+                            <div class="category-icon text-primary"><i data-lucide="help-circle"
+                                    style="width: 40px; height: 40px;"></i></div>
+                            <h3>Troubleshooting</h3>
+                            <p>Quick fixes for common errors and anti-bot challenges.</p>
+                        </div>
                     </div>
-                    <h3>Automation</h3>
-                    <p>Set up schedules, webhooks, and cloud-based recurring tasks.</p>
-                </a>
-                <a href="#" class="category-card">
-                    <div class="category-icon text-primary"><i data-lucide="plug"
-                            style="width: 40px; height: 40px;"></i></div>
-                    <h3>API & Integrations</h3>
-                    <p>Connect Extractify to your existing workflows via API and third-party tools.</p>
-                </a>
-                <a href="#" class="category-card">
-                    <div class="category-icon text-primary"><i data-lucide="help-circle"
-                            style="width: 40px; height: 40px;"></i></div>
-                    <h3>Troubleshooting</h3>
-                    <p>Quick fixes for common errors and anti-bot challenges.</p>
-                </a>
+                </div>
+            </section>
+
+            <!-- Popular Articles / FAQ -->
+            <section class="faq-section">
+                <div class="container">
+                    <div class="faq-title">
+                        <h2>Frequently Asked Questions</h2>
+                        <p>Quick answers to common questions about our platform.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">How do I start my first extraction? <span>▼</span></div>
+                        <div class="faq-answer">Simply enter the URL of the website you want to scrape into the
+                            dashboard,
+                            select the data points you want to capture using our visual selector, and hit "Run". You'll
+                            have
+                            your data in seconds.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Does Extractify handle JavaScript-heavy websites? <span>▼</span></div>
+                        <div class="faq-answer">Yes! Our advanced cloud-based browser engine can render JavaScript,
+                            handle
+                            single-page applications (SPAs), and wait for dynamic content to load before extraction.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Can I schedule scrapers to run daily? <span>▼</span></div>
+                        <div class="faq-answer">Absolutely. With our Automation features, you can schedule any project
+                            to run at
+                            specific intervals (hourly, daily, weekly) and receive the data automatically.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">What file formats are supported for export? <span>▼</span></div>
+                        <div class="faq-answer">We support XLSX (Excel), CSV, and JSON formats for all data extractions.
+                            You can
+                            also sync data directly to Google Sheets or via Webhooks.</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Detailed Help View -->
+        <div id="detailed-help-view" class="help-detailed-view">
+            <div class="container">
+                <div id="back-to-help" class="back-btn">
+                    <i data-lucide="arrow-left" style="width: 20px; height: 20px;"></i>
+                    Back to Help Center
+                </div>
+
+                <div class="detailed-content-wrapper">
+                    <div id="article-content" class="article-content">
+                        <!-- Content will be injected here -->
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
-
-    <!-- Popular Articles / FAQ -->
-    <section class="faq-section">
-        <div class="container">
-            <div class="faq-title">
-                <h2>Frequently Asked Questions</h2>
-                <p>Quick answers to common questions about our platform.</p>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">How do I start my first extraction? <span>▼</span></div>
-                <div class="faq-answer">Simply enter the URL of the website you want to scrape into the dashboard,
-                    select the data points you want to capture using our visual selector, and hit "Run". You'll have
-                    your data in seconds.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">Does Extractify handle JavaScript-heavy websites? <span>▼</span></div>
-                <div class="faq-answer">Yes! Our advanced cloud-based browser engine can render JavaScript, handle
-                    single-page applications (SPAs), and wait for dynamic content to load before extraction.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">Can I schedule scrapers to run daily? <span>▼</span></div>
-                <div class="faq-answer">Absolutely. With our Automation features, you can schedule any project to run at
-                    specific intervals (hourly, daily, weekly) and receive the data automatically.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">What file formats are supported for export? <span>▼</span></div>
-                <div class="faq-answer">We support XLSX (Excel), CSV, and JSON formats for all data extractions. You can
-                    also sync data directly to Google Sheets or via Webhooks.</div>
-            </div>
-        </div>
-    </section>
+    </main>
 
     <!-- Support CTA -->
     <section class="support-cta">
@@ -400,12 +489,126 @@
     </footer>
 
     <script>
+        // Data for detailed articles
+        const articleData = {
+            'getting-started': {
+                title: 'Getting Started with Extractify',
+                content: `
+                    <p>Welcome to Extractify! Our platform is designed to make web data extraction accessible to everyone, regardless of technical background. Follow this guide to launch your first extraction in under 5 minutes.</p>
+                    <h2>1. Define Your Target</h2>
+                    <p>Start by entering the URL of the website you want to extract data from into our main dashboard. Our cloud browser will load the page just as a regular user would.</p>
+                    <h2>2. Choose Your Data Points</h2>
+                    <p>Use our Visual Selector tool to click on the elements you want to capture. You can select text, links, images, and even attributes like "price" or "availability".</p>
+                    <h2>3. Run and Export</h2>
+                    <p>Once you've configured your scraper, hit the "Run" button. Extractify will process the page and provide you with a clean dataset in CSV, JSON, or Excel format.</p>
+                    <ul>
+                        <li>Tip: Use the "Preview" button to see a sample of your data before running a full scan.</li>
+                        <li>Automate: You can schedule these runs to happen daily or weekly automatically.</li>
+                    </ul>
+                `
+            },
+            'billing': {
+                title: 'Account & Billing Management',
+                content: `
+                    <p>Managing your subscription with Extractify is straightforward. We offer flexible plans tailored to your data needs.</p>
+                    <h2>Subscription Plans</h2>
+                    <p>Choose between our Starter, Professional, and Enterprise plans. Each plan comes with a set amount of credits that can be used for extractions, JS rendering, and premium proxies.</p>
+                    <h2>Invoicing and Payments</h2>
+                    <p>You can download all your past invoices from the 'Billing' tab in your account settings. We accept all major credit cards and PayPal.</p>
+                    <h2>Upgrading or Downgrading</h2>
+                    <p>You can change your plan at any time. If you upgrade, the new features will be available immediately. If you downgrade, your current plan will remain active until the end of the billing cycle.</p>
+                `
+            },
+            'tools': {
+                title: 'Mastering Scraping Tools',
+                content: `
+                    <p>Go beyond simple text extraction with our advanced toolkit designed for complex web architectures.</p>
+                    <h2>Advanced Selectors</h2>
+                    <p>While our visual selector is powerful, you can also use CSS selectors or XPath for more precise targeting of nested elements.</p>
+                    <h2>Handling Pagination</h2>
+                    <p>Learn how to set up pagination rules so Extractify can "click next" and crawl through hundreds of pages of results automatically.</p>
+                    <h2>Infinite Scroll</h2>
+                    <p>For modern websites that load content as you scroll, we provide dedicated tools to simulate scrolling behavior and capture all available data.</p>
+                `
+            },
+            'automation': {
+                title: 'Automation & Cloud Tasks',
+                content: `
+                    <p>Set your data extraction on autopilot with our robust automation suite.</p>
+                    <h2>Scheduling Runs</h2>
+                    <p>Configure your scrapers to run at specific intervals—hourly, daily, or weekly. Never miss a price change or new listing again.</p>
+                    <h2>Webhooks</h2>
+                    <p>Connect Extractify to your own application. We can send a POST request to your server the moment an extraction is complete, delivering the fresh data instantly.</p>
+                    <h2>Cloud-Based Execution</h2>
+                    <p>All scheduled tasks run in our distributed cloud infrastructure, ensuring high reliability and bypassing local machine limitations.</p>
+                `
+            },
+            'api': {
+                title: 'API & Integrations Guide',
+                content: `
+                    <p>Integrate Extractify directly into your tech stack using our comprehensive REST API.</p>
+                    <h2>API Keys</h2>
+                    <p>Generate secure API keys from your developer dashboard to authenticate your requests safely.</p>
+                    <h2>Third-Party Connections</h2>
+                    <p>No coding required? Use our official integrations for Zapier, Make.com, and Google Sheets to move your data where it's needed most.</p>
+                    <h2>SDKs</h2>
+                    <p>We provide official libraries for Python, Node.js, and Go to make implementing Extractify API calls even easier.</p>
+                `
+            },
+            'troubleshooting': {
+                title: 'Troubleshooting & Tips',
+                content: `
+                    <p>Encountered a hurdle? Here's how to solve the most common challenges in web scraping.</p>
+                    <h2>Anti-Bot Challenges</h2>
+                    <p>If you're getting blocked, try enabling our "Bright Proxies" or "Residential Proxies" settings which mimic real user traffic patterns.</p>
+                    <h2>Missing Data</h2>
+                    <p>If some fields are blank, check if the website uses "Lazy Loading". Adding a 'Wait' timer in your scraper settings usually fixes this.</p>
+                    <h2>Selector Stability</h2>
+                    <p>Websites change often. If your scraper stops working, use our "Auto-Fix" tool which attempts to find the new location of your missing data points.</p>
+                `
+            }
+        };
+
+        // Navigation Elements
+        const mainView = document.getElementById('main-help-view');
+        const detailedView = document.getElementById('detailed-help-view');
+        const articleContainer = document.getElementById('article-content');
+        const backBtn = document.getElementById('back-to-help');
+
         // Simple FAQ Toggle
         document.querySelectorAll('.faq-question').forEach(button => {
             button.addEventListener('click', () => {
                 const item = button.parentElement;
                 item.classList.toggle('active');
             });
+        });
+
+        // Category Click Handler
+        document.querySelectorAll('.category-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const category = card.getAttribute('data-category');
+                const data = articleData[category];
+
+                if (data) {
+                    // Inject Content
+                    articleContainer.innerHTML = `
+                        <h1>${data.title}</h1>
+                        <div class="article-body">${data.content}</div>
+                    `;
+
+                    // Switch Views
+                    mainView.style.display = 'none';
+                    detailedView.style.display = 'block';
+                    window.scrollTo(0, 0);
+                }
+            });
+        });
+
+        // Back Button Handler
+        backBtn.addEventListener('click', () => {
+            detailedView.style.display = 'none';
+            mainView.style.display = 'block';
+            window.scrollTo(0, 0);
         });
 
         // Initialize Lucide Icons

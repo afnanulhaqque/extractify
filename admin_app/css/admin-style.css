@@ -158,6 +158,14 @@ a:hover {
   );
   color: var(--text-inverse);
   box-shadow: 0 4px 12px rgba(15, 14, 71, 0.25);
+  box-shadow: 0 4px 12px rgba(15, 14, 71, 0.25);
+}
+.nav-item-danger:hover {
+  background-color: var(--danger-color);
+  color: white !important;
+}
+.nav-item-danger:hover i {
+  color: white !important;
 }
 
 .nav-section-title {
@@ -269,9 +277,184 @@ a:hover {
   cursor: pointer;
   border: 2px solid white;
   box-shadow: var(--shadow-sm);
+  overflow: hidden;
 }
 
-/* View Container */
+.profile-avatar img,
+#settings-avatar img,
+#team-me-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Profile Dropdown */
+.profile-dropdown-container {
+  position: relative;
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  width: 320px;
+  background-color: var(--bg-surface);
+  border-radius: var(--border-radius-lg);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--border-color);
+  z-index: 1000;
+  padding: 8px;
+  display: none;
+  animation: dropdownFadeIn 0.2s ease-out;
+}
+
+.profile-dropdown.active {
+  display: block;
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdown-section {
+  padding: 4px;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background-color: var(--border-color);
+  margin: 8px 4px;
+}
+
+/* Account items in dropdown */
+.account-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: var(--border-radius-md);
+  transition: background-color var(--transition-fast);
+  cursor: pointer;
+  position: relative;
+}
+
+.account-item:hover {
+  background-color: var(--bg-hover);
+}
+
+.account-item.active {
+  background-color: var(--bg-hover);
+}
+
+.account-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.account-info {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.account-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.account-email {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.account-badge {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.account-badge.personal {
+  background-color: rgba(15, 14, 71, 0.05);
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+}
+
+.account-badge.team {
+  background-color: rgba(15, 14, 71, 0.05);
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+}
+
+/* Dropdown list links */
+.dropdown-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--border-radius-md);
+  color: var(--text-main);
+  font-size: 0.9rem;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.dropdown-link i {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  transition: color var(--transition-fast);
+}
+
+.dropdown-link:hover {
+  background-color: var(--bg-hover);
+  color: var(--primary-color);
+}
+
+.dropdown-link:hover i {
+  color: var(--primary-color);
+}
+
+.dropdown-link.upgrade {
+  color: var(--warning-color) !important;
+}
+
+.dropdown-link.upgrade i {
+  color: var(--warning-color) !important;
+}
+
+.logout-section .dropdown-link:hover {
+  background-color: rgba(239, 68, 68, 0.05);
+  color: var(--danger-color);
+}
+
+.logout-section .dropdown-link:hover i {
+  color: var(--danger-color);
+}
 .view-container {
   flex-grow: 1;
   overflow-y: auto;
