@@ -1,0 +1,101 @@
+/* 
+  Extractify Responsive Styles
+  Standardized Media Queries for All Devices
+*/
+
+/* 1. Small Android phones, older iPhones (max-width: 480px) */
+@media screen and (max-width: 480px) {
+  .container {
+    padding: 0 var(--spacing-md);
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+    text-align: center;
+  }
+
+  .hero-content h1 {
+    font-size: 2.5rem !important;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .grid-cols-2,
+  .grid-cols-3,
+  .grid-cols-4 {
+    grid-template-columns: 1fr !important;
+  }
+
+  .section {
+    padding: var(--spacing-2xl) 0 !important;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    text-align: center;
+  }
+
+  .nav-container {
+    padding: 0 var(--spacing-md);
+  }
+}
+
+/* 2. Broader phones (min-width: 481px) and (max-width: 767px) */
+@media screen and (min-width: 481px) and (max-width: 767px) {
+  .container {
+    padding: 0 var(--spacing-lg);
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 3rem !important;
+    text-align: center;
+  }
+
+  .grid-cols-3,
+  .grid-cols-4 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* 3. iPad, Android tablets (min-width: 768px) and (max-width: 1024px) */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    padding: 0 var(--spacing-xl);
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 2rem !important;
+  }
+
+  .grid-cols-4 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* 4. 13 inch to 15 inch laptops (min-width: 1025px) and (max-width: 1440px) */
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+  .container {
+    max-width: 1200px;
+  }
+}
+
+/* 5. Large Desktop / PC (min-width: 1441px) */
+@media screen and (min-width: 1441px) {
+  .container {
+    max-width: 1400px;
+  }
+
+  body {
+    font-size: 1.1rem;
+  }
+}

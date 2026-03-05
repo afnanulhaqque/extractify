@@ -4,131 +4,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms of Service - Extractify</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/components.css">
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        /* Shared Styles */
-        .navbar {
-            background-color: var(--color-bg-main);
-            padding: var(--spacing-md) 0;
-            border-bottom: 1px solid var(--color-border);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
+    background-color: var(--color-bg-main);
+    padding: var(--spacing-md) 0;
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    }
 
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    }
 
-        .nav-brand {
-            font-family: var(--font-heading);
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--color-primary);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+    .nav-brand {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    }
 
-        .nav-links {
-            display: flex;
-            gap: var(--spacing-lg);
-            align-items: center;
-        }
+    .nav-links {
+    display: flex;
+    gap: var(--spacing-lg);
+    align-items: center;
+    }
 
-        .nav-link {
-            font-weight: 600;
-            color: var(--color-text-main);
-            text-decoration: none;
-        }
+    .nav-link {
+    font-weight: 600;
+    color: var(--color-text-main);
+    text-decoration: none;
+    }
 
-        .nav-link:hover {
-            color: var(--color-primary);
-        }
+    .nav-link:hover {
+    color: var(--color-primary);
+    }
 
-        .footer {
-            background-color: var(--color-text-main);
-            color: white;
-            padding: var(--spacing-4xl) 0 var(--spacing-2xl);
-        }
+    .footer {
+    background-color: var(--color-text-main);
+    color: white;
+    padding: var(--spacing-4xl) 0 var(--spacing-2xl);
+    }
 
-        .footer p,
-        .footer a {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.875rem;
-            text-decoration: none;
-        }
+    .footer p,
+    .footer a {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.875rem;
+    text-decoration: none;
+    }
 
-        .footer a:hover {
-            color: white;
-        }
+    .footer a:hover {
+    color: white;
+    }
 
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: var(--spacing-2xl);
-            margin-bottom: var(--spacing-3xl);
-        }
+    .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: var(--spacing-2xl);
+    margin-bottom: var(--spacing-3xl);
+    }
 
-        .footer-logo {
-            font-family: var(--font-heading);
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: white;
-            text-decoration: none;
-            margin-bottom: var(--spacing-md);
-            display: inline-flex;
-            align-items: center;
-        }
+    .footer-logo {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+    margin-bottom: var(--spacing-md);
+    display: inline-flex;
+    align-items: center;
+    }
 
-        .content-section {
-            padding: var(--spacing-4xl) 0;
-            max-width: 800px;
-            margin: 0 auto;
-        }
+    .content-section {
+    padding: var(--spacing-4xl) 0;
+    max-width: 800px;
+    margin: 0 auto;
+    }
 
-        .content-section h1 {
-            margin-bottom: var(--spacing-xl);
-            font-size: 2.5rem;
-            text-align: center;
-            color: var(--color-primary);
-        }
+    .content-section h1 {
+    margin-bottom: var(--spacing-xl);
+    font-size: 2.5rem;
+    text-align: center;
+    color: var(--color-primary);
+    }
 
-        .content-section h2 {
-            margin-top: var(--spacing-2xl);
-            margin-bottom: var(--spacing-md);
-            font-size: 1.5rem;
-            color: var(--color-text-main);
-        }
+    .content-section h2 {
+    margin-top: var(--spacing-2xl);
+    margin-bottom: var(--spacing-md);
+    font-size: 1.5rem;
+    color: var(--color-text-main);
+    }
 
-        .content-section p {
-            margin-bottom: var(--spacing-md);
-            color: var(--color-text-main);
-            line-height: 1.6;
-        }
+    .content-section p {
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text-main);
+    line-height: 1.6;
+    }
 
-        .content-section ul {
-            margin-bottom: var(--spacing-md);
-            padding-left: 20px;
-            color: var(--color-text-main);
-            line-height: 1.6;
-        }
+    .content-section ul {
+    margin-bottom: var(--spacing-md);
+    padding-left: 20px;
+    color: var(--color-text-main);
+    line-height: 1.6;
+    }
 
-        .content-section li {
-            margin-bottom: 8px;
-        }
+    .content-section li {
+    margin-bottom: 8px;
+    }
     </style>
 
     <script src="js/components.js"></script>
@@ -244,5 +231,3 @@
 </body>
 
 </html>
-
-
