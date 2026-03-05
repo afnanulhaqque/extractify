@@ -42,6 +42,28 @@
   .nav-container {
     padding: 0 var(--spacing-md);
   }
+
+  /* Modal Fixes for Small Devices */
+  .demo-modal-container {
+    width: calc(100% - 30px) !important;
+    margin: 15px !important;
+    max-height: 85vh !important;
+    border-radius: 16px !important;
+  }
+
+  .demo-modal-content {
+    padding: var(--spacing-xl) !important;
+  }
+
+  .chat-modal {
+    width: 100% !important;
+    height: 100% !important;
+    bottom: 0 !important;
+    right: 0 !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    border-radius: 0 !important;
+  }
 }
 
 /* 2. Broader phones (min-width: 481px) and (max-width: 767px) */
@@ -64,6 +86,13 @@
   .footer-grid {
     grid-template-columns: repeat(2, 1fr) !important;
   }
+
+  /* Modal Fixes for Broader Phones */
+  .demo-modal-container {
+    width: 90% !important;
+    max-width: 500px !important;
+    max-height: 90vh !important;
+  }
 }
 
 /* 3. iPad, Android tablets (min-width: 768px) and (max-width: 1024px) */
@@ -79,6 +108,12 @@
 
   .grid-cols-4 {
     grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* Modal Fixes for Tablets */
+  .demo-modal-container {
+    width: 80% !important;
+    max-width: 700px !important;
   }
 }
 
